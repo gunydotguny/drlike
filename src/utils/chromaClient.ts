@@ -14,19 +14,19 @@
 // };
 
 //chromaClient.ts
-import { ChromaClient } from "chromadb";
+// import { ChromaClient } from "chromadb";
 
-export const chromaClient = new ChromaClient({
-  path: `${process.env.NEXT_PUBLIC_CHROMA_HOST}`,
-});
+// export const chromaClient = new ChromaClient({
+//   path: `${process.env.NEXT_PUBLIC_CHROMA_HOST}`,
+// });
 
-export const getCollection = async (name: string) => {
-  return await chromaClient.getOrCreateCollection({
-    name,
-    metadata: {
-      "hnsw:space": "cosine"
-    },
-    // @ts-expect-error
-    dimension: 1024
-  });
-};
+// export const getCollection = async (name: string) => {
+//   return await chromaClient.getOrCreateCollection({
+//     name,
+//     metadata: {
+//       "hnsw:space": "cosine"
+//     },
+//     // @ts-expect-error
+//     dimension: 1024
+//   });
+// };

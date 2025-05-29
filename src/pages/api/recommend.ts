@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
 import { getEmbedding } from "../../lib/getEmbeddings";
-import { getCollection } from "../../utils/chromaClient";
 import { generatePrompt } from "../../prompt";
 
 const openai = new OpenAI({
@@ -9,9 +8,9 @@ const openai = new OpenAI({
   baseURL: "https://api.upstage.ai/v1",
 });
 
-/**
- * Remove markdown fences from a string
- */
+const CHROMA_HOST = process.env.CHROMA_HOST!;
+const COLLECTION_NAME = "drlike-case-collection";
+
 function stripMarkdownFence(text: string): string {
   return text
     .replace(/^```json\s*/i, "")
@@ -19,7 +18,6 @@ function stripMarkdownFence(text: string): string {
     .replace(/```$/, "")
     .trim();
 }
-
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -32,33 +30,49 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: "Missing formData or presetValue" });
     }
 
-    // 1. 벡터 임베딩
     const embedding = await getEmbedding(formData);
 
-    // 2. 유사 증례 검색
-    const collection = await getCollection("drlike-case-collection");
-    const result = await collection.query({
-      queryEmbeddings: [embedding],
-      nResults: 10,
+    // 1. 컬렉션 ID 가져오기
+    const listRes = await fetch(`${CHROMA_HOST}/api/v1/collections`);
+    const collections = await listRes.json();
+    const collection = collections.find((c: any) => c.name === COLLECTION_NAME);
+    if (!collection) {
+      return res.status(500).json({ error: "Collection not found" });
+    }
+
+    const collectionId = collection.id;
+
+    // 2. 문서 수
+    const countRes = await fetch(`${CHROMA_HOST}/api/v1/collections/${collectionId}/count`);
+    const totalCount = await countRes.text();
+
+    // 3. 유사 증례 검색
+    const queryRes = await fetch(`${CHROMA_HOST}/api/v1/collections/${collectionId}/query`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query_embeddings: [embedding],
+        n_results: 10,
+        include: ["metadatas", "distances"],
+      }),
     });
 
-    const retrievedCases = result.metadatas?.[0] || [];
-    const distances = result.distances?.[0] || [];
-    const filteredCases = retrievedCases; // 필터 임시 제외
+    if (!queryRes.ok) throw new Error(`Query failed: ${queryRes.status}`);
+    const queryData = await queryRes.json();
+    const retrievedCases = queryData.metadatas?.[0] || [];
+    const distances = queryData.distances?.[0] || [];
+
     // const filteredCases = retrievedCases.filter((_, i) => distances[i] < 0.65);
+    const filteredCases = retrievedCases;
 
     const prompt = generatePrompt(formData, filteredCases, presetValue);
     const debug = {
-      totalCount: await collection.count(),
+      totalCount: parseInt(totalCount, 10),
       retrieved: retrievedCases.length,
       filtered: filteredCases.length,
       promptLength: prompt.length,
       promptPreview: prompt.slice(0, 500),
     };
-
-    console.log("💾 벡터 DB 총 건수:", debug.totalCount);
-    console.log("🔍 검색된 건수:", debug.retrieved);
-    console.log("✅ 필터 통과 건수 (<0.65):", debug.filtered);
 
     if (filteredCases.length === 0) {
       return res.status(200).json({
@@ -68,39 +82,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
 
-    console.log("🧠 Prompt 길이:", debug.promptLength);
-    console.log("🧠 Prompt 미리보기:\n", debug.promptPreview);
-
-    // 4. LLM 호출
     const completion = await openai.chat.completions.create({
       model: "solar-pro",
       messages: [{ role: "user", content: prompt }],
     });
 
     const raw = completion.choices?.[0]?.message?.content?.trim();
-    console.log("🤖 LLM 응답 원본:\n", raw);
-
     if (!raw) {
       return res.status(200).json({ recommendationList: [], reason: "empty_llm_response", debug });
     }
 
-    // 5. JSON 파싱
-    let parsed: any = null;
-    let error: string | null = null;
-
+    let parsed: any;
     try {
       const clean = stripMarkdownFence(raw);
       parsed = JSON.parse(clean);
-    } catch (err) {
+    } catch {
       return res.status(200).json({ recommendationList: [], reason: "invalid_json", raw, debug });
     }
 
     let recommendationList: any[] = [];
-    if (Array.isArray(parsed)) {
-      recommendationList = parsed;
-    } else if (parsed.cases && Array.isArray(parsed.cases)) {
-      recommendationList = parsed.cases;
-    } else {
+    if (Array.isArray(parsed)) recommendationList = parsed;
+    else if (parsed.cases && Array.isArray(parsed.cases)) recommendationList = parsed.cases;
+    else {
       return res.status(200).json({
         recommendationList: [],
         reason: "invalid_output_structure",
@@ -109,13 +112,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
 
-    return res.status(200).json({
-      recommendationList,
-      raw,
-      debug,
-    });
-  } catch (e) {
-    console.error("🔥 API 전체 오류:", e);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(200).json({ recommendationList, raw, debug });
+  } catch (e: any) {
+    console.error("🔥 API 전체 오류:", e.message || e);
+    return res.status(500).json({ error: "Internal Server Error", detail: e.message });
   }
 }

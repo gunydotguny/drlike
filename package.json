@@ -33,7 +33,6 @@
     "babel-plugin-styled-components": "^2.0.2",
     "base-64": "^1.0.0",
     "chart.js": "^3.8.0",
-    "chromadb": "^2.4.6",
     "dotenv": "^16.5.0",
     "eslint": "^8.1.0",
     "jquery": "^3.6.0",
