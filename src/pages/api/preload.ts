@@ -1,7 +1,7 @@
-import path from "path";
-import { promises as fs } from "fs";
-import { getCollection } from "../../utils/chromaClient";
+// /pages/api/preload.ts
+
 import { getEmbedding } from "../../lib/getEmbeddings";
+import { getCollection } from "../../utils/chromaClient";
 import { flattenCaseData } from "../../utils/flattenCaseData";
 
 export default async function handler(req: any, res: any) {
@@ -10,10 +10,13 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // ✅ public 디렉토리에 있는 파일 읽기
-    const filePath = path.join(process.cwd(), "public", "clinical_cases.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    const cases = JSON.parse(raw);
+    // ✅ public/clinical_cases.json → 정적 URL로 fetch
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000";
+
+    const response = await fetch(`${baseUrl}/clinical_cases.json`);
+    const cases = await response.json();
 
     const collection = await getCollection("clinical-cases-1024-v3");
 
