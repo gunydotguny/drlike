@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
-
+  
   try {
     const raw = fs.readFileSync(filePath, "utf-8");
     const cases = JSON.parse(raw);
