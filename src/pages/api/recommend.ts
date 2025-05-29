@@ -20,25 +20,6 @@ function stripMarkdownFence(text: string): string {
     .trim();
 }
 
-/**
- * Try parsing JSON, return both parsed and error
- */
-function tryParseJson(raw: string): { parsed: any | null; error: string | null } {
-  try {
-    const clean = stripMarkdownFence(raw);
-    const parsed = JSON.parse(clean);
-
-    if (!Array.isArray(parsed)) {
-      console.error("❌ 구조 오류: JSON이 배열이 아님:", parsed);
-      return { parsed: null, error: "invalid_output_structure" };
-    }
-
-    return { parsed, error: null };
-  } catch (err) {
-    console.error("❌ JSON 파싱 실패:", err);
-    return { parsed: null, error: "invalid_json" };
-  }
-}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
