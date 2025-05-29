@@ -26,8 +26,8 @@
   },
   "include": [
     "src",
-    "scripts"
-  ],
+    "src/scripts"
+, "src/scripts"  ],
   "exclude": [
     "node_modules"
   ]

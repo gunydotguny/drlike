@@ -34,6 +34,7 @@
     "base-64": "^1.0.0",
     "chart.js": "^3.8.0",
     "chromadb": "^2.4.6",
+    "dotenv": "^16.5.0",
     "eslint": "^8.1.0",
     "jquery": "^3.6.0",
     "lexical": "^0.14.2",
@@ -78,8 +79,8 @@
     "export": "next export",
     "type-check": "tsc",
     "pm2-start": "pm2 start yarn --interpreter bash --name app -- start",
-    "preload": "ts-node -P tsconfig.scripts.json ./src/embeddings/preloadEmbeddings.ts",
-    "chroma" : "chroma run --path ./chroma_data"
+    "preload": "ts-node -P tsconfig.scripts.json ./src/scripts/preload.ts",
+    "chroma": "chroma run --path ./chroma_data"
   },
   "browserslist": {
     "production": [
@@ -107,6 +108,7 @@
     "prettier": "^2.7.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.0.0",
+    "tsx": "^4.19.4",
     "typescript": "4.7.4",
     "vercel": "^28.0.1"
   }
