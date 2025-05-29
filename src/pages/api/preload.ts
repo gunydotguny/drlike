@@ -1,18 +1,17 @@
-// /pages/api/preload.ts
-
 import path from "path";
 import { promises as fs } from "fs";
 import { getCollection } from "../../utils/chromaClient";
 import { getEmbedding } from "../../lib/getEmbeddings";
 import { flattenCaseData } from "../../utils/flattenCaseData";
 
-export default async function handler(req : any, res : any) {
+export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
   try {
-    const filePath = path.join(process.cwd(), "data", "clinical_cases.json");
+    // ✅ public 디렉토리에 있는 파일 읽기
+    const filePath = path.join(process.cwd(), "public", "clinical_cases.json");
     const raw = await fs.readFile(filePath, "utf-8");
     const cases = JSON.parse(raw);
 
@@ -22,6 +21,7 @@ export default async function handler(req : any, res : any) {
 
     for (const caseData of cases) {
       if (!caseData.case_id) continue;
+
       const embedding = await getEmbedding(caseData);
       if (!embedding || embedding.length !== 1024) continue;
 
