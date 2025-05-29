@@ -13,7 +13,8 @@ export default async function handler(req: any, res: any) {
         const response = await fetch("https://drlike.vercel.app/data/clinical_cases.json");
         const cases = await response.json();
 
-        const collection = await getCollection("clinical-cases-1024-v3");
+        const collection = await getCollection("drlike-case-collection");
+        console.log(collection);
 
         let count = 0;
 

@@ -1,7 +1,7 @@
 import { ChromaClient } from "chromadb";
 
 export const chromaClient = new ChromaClient({
-  path: "https://chroma-fly.fly.dev", // 여기를 Fly.io 앱 주소로 바꾸세요!
+  path: "https://chroma-production-889a.up.railway.app", 
 });
 
 export const getCollection = async (name: string) => {

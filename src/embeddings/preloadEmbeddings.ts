@@ -9,7 +9,7 @@ const raw = fs.readFileSync(filePath, "utf-8");
 const cases = JSON.parse(raw);
 
 (async () => {
-    const collection = await getCollection("clinical-cases-1024-v3");
+    const collection = await getCollection("drlike-case-collection");
 
     for (const caseData of cases) {
         const caseSummary = caseData.case_summary || JSON.stringify(caseData);

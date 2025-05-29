@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const embedding = await getEmbedding(formData);
 
     // 2. 유사 증례 검색
-    const collection = await getCollection("clinical-cases-1024-v3");
+    const collection = await getCollection("drlike-case-collection");
     const result = await collection.query({
       queryEmbeddings: [embedding],
       nResults: 10,

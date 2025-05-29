@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const formData = req.body;
     const embedding = await getEmbedding(formData);
 
-    const collection = await getCollection('clinical-cases-1024-v3');
+    const collection = await getCollection('drlike-case-collection');
     const result = await collection.query({
       queryEmbeddings: [embedding],
       nResults: 5,
