@@ -7,4 +7,7 @@ module.exports = {
   experimental: {
     scrollRestoration: true,
   },
+  env: {
+    UPSTAGE_API_KEY: process.env.UPSTAGE_API_KEY,
+  },
 };

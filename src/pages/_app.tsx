@@ -1,3 +1,4 @@
+// pages/_app.tsx
 import Head from "next/head";
 import { AppProps } from "next/app";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -28,16 +29,9 @@ import {
   PieController,
   DoughnutController,
 } from "chart.js";
-import _ from "lodash";
-
-//#region Fontawesome 개인 플랜 만료
-// import { fal } from "@fortawesome/pro-light-svg-icons";
-// import { far } from "@fortawesome/pro-regular-svg-icons";
-// import { fas } from "@fortawesome/pro-solid-svg-icons";
-// import { fad } from "@fortawesome/pro-duotone-svg-icons";
-// const { library, config } = require("@fortawesome/fontawesome-svg-core");
-// library.add(fal, far, fas, fad);
-//#endregion Fontawesome 개인 플랜 만료
+import Script from "next/script";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 declare global {
   interface Window {
@@ -67,6 +61,7 @@ const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
+
 function MyApp(props: MyAppProps) {
   const router = useRouter();
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -79,149 +74,43 @@ function MyApp(props: MyAppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover"
         />
-        <meta name="keywords" content="1@" />
-        <meta
-          name="description"
-          content="1@"
-        />
-        ㄴ
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Dr.LIKE" />
+        <meta name="description" content="1@" />
         <meta property="og:title" content="Dr.LIKE" />
-        <meta
-          property="og:description"
-          content="1@"
-        />
-        {/* <meta property="og:image" content="/images/favicon/share.png" /> */}
+        <meta property="og:description" content="1@" />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="200" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:url" content="https://1@" />
-        <meta name="twitter:card" content="summary" data-react-helmet="true" />
-        <meta name="twitter:creator" content="" data-react-helmet="true" />
-        <meta
-          name="twitter:title"
-          content="Dr.LIKE"
-          data-react-helmet="true"
-        />
-        <meta
-          name="twitter:description"
-          content="1@"
-          data-react-helmet="true"
-        />
-        {/* <meta name="twitter:image" content="/images/share.png" /> */}
-        <meta name="HandheldFriendly" content="true" />
-        <link
-          rel="shortcut icon"
-          href="/images/favicon/favicon.ico"
-          type="image/x-icon"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="57x57"
-          href="/images/favicon/apple-icon-57x57.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="60x60"
-          href="/images/favicon/apple-icon-60x60.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="72x72"
-          href="/images/favicon/apple-icon-72x72.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/images/favicon/apple-icon-76x76.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="114x114"
-          href="/images/favicon/apple-icon-114x114.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/images/favicon/apple-icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="144x144"
-          href="/images/favicon/apple-icon-144x144.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/images/favicon/apple-icon-152x152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/favicon/apple-icon-180x180.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="144x144"
-          href="/favicon/android-icon-144x144.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/images/favicon/android-icon-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/images/favicon/favicon-96x96.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/images/favicon/manifest.json" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Dr.LIKE" />
+        <meta name="twitter:description" content="1@" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta
-          name="msapplication-TileImage"
-          content="/images/favicon/ms-icon-144x144.png"
-        />
-        <script src="https://js.pusher.com/3.2/pusher.min.js" />
-        <script
-          type="text/javascript"
-          src="https://code.jquery.com/jquery-1.12.4.min.js"
-        ></script>
-        <script
-          type="text/javascript"
-          src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"
-        ></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+        <link rel="manifest" href="/images/favicon/manifest.json" />
+        {/* 앱 아이콘은 그대로 유지 */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
       </Head>
+
+      {/* ✅ next/script로 외부 스크립트 로드 */}
+      <Script src="https://js.pusher.com/3.2/pusher.min.js" strategy="beforeInteractive" />
+      <Script src="https://code.jquery.com/jquery-1.12.4.min.js" strategy="beforeInteractive" />
+      <Script src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js" strategy="beforeInteractive" />
+
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Global styles={reset} />
-          <Component {...pageProps} key={router.route} />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Component {...pageProps} key={router.route} />
+          </LocalizationProvider>
         </ThemeProvider>
       </RecoilRoot>
     </CacheProvider>
   );
 }
+
 export default MyApp;

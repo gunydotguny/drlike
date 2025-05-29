@@ -1,0 +1,5073 @@
+[
+  {
+    "case_id": "001",
+    "patient_name": "환자001",
+    "age": 5,
+    "sex": "여",
+    "height_cm": 149,
+    "weight_kg": 38,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "기침",
+      "피로",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 18883/μL, CRP: 9.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-05"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "3세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "002",
+    "patient_name": "환자002",
+    "age": 11,
+    "sex": "여",
+    "height_cm": 120,
+    "weight_kg": 16,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 11153/μL, CRP: 6.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-12"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "4세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "003",
+    "patient_name": "환자003",
+    "age": 10,
+    "sex": "여",
+    "height_cm": 109,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 16079/μL, CRP: 4.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-08"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "11세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "004",
+    "patient_name": "환자004",
+    "age": 5,
+    "sex": "남",
+    "height_cm": 97,
+    "weight_kg": 12,
+    "nutritional_status": [
+      "정상",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 21492/μL, CRP: 7.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-08"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "6세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "005",
+    "patient_name": "환자005",
+    "age": 7,
+    "sex": "남",
+    "height_cm": 143,
+    "weight_kg": 34,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "호흡곤란",
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 19811/μL, CRP: 4.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-17"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "12세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "006",
+    "patient_name": "환자006",
+    "age": 10,
+    "sex": "남",
+    "height_cm": 122,
+    "weight_kg": 33,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "기침",
+      "고열",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 20294/μL, CRP: 4.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-12"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "12세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "007",
+    "patient_name": "환자007",
+    "age": 10,
+    "sex": "여",
+    "height_cm": 134,
+    "weight_kg": 32,
+    "nutritional_status": [
+      "발달지연",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "기침",
+      "가래",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 16926/μL, CRP: 4.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-15"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "4세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "008",
+    "patient_name": "환자008",
+    "age": 8,
+    "sex": "여",
+    "height_cm": 109,
+    "weight_kg": 39,
+    "nutritional_status": [
+      "발달지연",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "기침",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 20386/μL, CRP: 6.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-08",
+      "end": "2024-01-12"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "10세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "009",
+    "patient_name": "환자009",
+    "age": 11,
+    "sex": "여",
+    "height_cm": 97,
+    "weight_kg": 44,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식",
+      "없음"
+    ],
+    "symptoms": [
+      "가래",
+      "호흡곤란",
+      "피로",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 21422/μL, CRP: 6.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-08",
+      "end": "2024-01-14"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "10세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "010",
+    "patient_name": "환자010",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 112,
+    "weight_kg": 44,
+    "nutritional_status": [
+      "발달지연",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "호흡곤란",
+      "기침",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 23153/μL, CRP: 6.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-14"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "10세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "011",
+    "patient_name": "환자011",
+    "age": 7,
+    "sex": "여",
+    "height_cm": 106,
+    "weight_kg": 16,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "천식"
+    ],
+    "symptoms": [
+      "기침",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 20035/μL, CRP: 8.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-20"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "2세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "012",
+    "patient_name": "환자012",
+    "age": 7,
+    "sex": "남",
+    "height_cm": 108,
+    "weight_kg": 20,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "천식"
+    ],
+    "symptoms": [
+      "고열",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 16941/μL, CRP: 8.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-19"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "4세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "013",
+    "patient_name": "환자013",
+    "age": 1,
+    "sex": "여",
+    "height_cm": 151,
+    "weight_kg": 41,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "피로",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 17660/μL, CRP: 7.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-08",
+      "end": "2024-01-14"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "2세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "014",
+    "patient_name": "환자014",
+    "age": 12,
+    "sex": "남",
+    "height_cm": 88,
+    "weight_kg": 16,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "피로",
+      "고열",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 19291/μL, CRP: 8.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-07",
+      "end": "2024-01-17"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "015",
+    "patient_name": "환자015",
+    "age": 9,
+    "sex": "남",
+    "height_cm": 109,
+    "weight_kg": 39,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 12526/μL, CRP: 5.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-10"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "4세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "016",
+    "patient_name": "환자016",
+    "age": 10,
+    "sex": "여",
+    "height_cm": 110,
+    "weight_kg": 30,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 21385/μL, CRP: 8.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-15"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "5세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "017",
+    "patient_name": "환자017",
+    "age": 11,
+    "sex": "여",
+    "height_cm": 138,
+    "weight_kg": 44,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 19095/μL, CRP: 4.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-07",
+      "end": "2024-01-11"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "2세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "018",
+    "patient_name": "환자018",
+    "age": 4,
+    "sex": "여",
+    "height_cm": 147,
+    "weight_kg": 36,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 18031/μL, CRP: 7.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-16"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "7세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "019",
+    "patient_name": "환자019",
+    "age": 7,
+    "sex": "남",
+    "height_cm": 103,
+    "weight_kg": 25,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 24296/μL, CRP: 8.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-04"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "5세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "020",
+    "patient_name": "환자020",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 138,
+    "weight_kg": 29,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "가래",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 20664/μL, CRP: 4.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-13"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "11세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "021",
+    "patient_name": "환자021",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 152,
+    "weight_kg": 39,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 19847/μL, CRP: 6.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-07",
+      "end": "2024-01-14"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "7세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "022",
+    "patient_name": "환자022",
+    "age": 1,
+    "sex": "남",
+    "height_cm": 154,
+    "weight_kg": 28,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "고열",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 20774/μL, CRP: 4.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-09"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "6세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "023",
+    "patient_name": "환자023",
+    "age": 4,
+    "sex": "남",
+    "height_cm": 127,
+    "weight_kg": 30,
+    "nutritional_status": [
+      "정상",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "가래",
+      "고열",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 23806/μL, CRP: 4.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-08"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "7세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "024",
+    "patient_name": "환자024",
+    "age": 8,
+    "sex": "남",
+    "height_cm": 129,
+    "weight_kg": 30,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 16286/μL, CRP: 6.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "7세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "025",
+    "patient_name": "환자025",
+    "age": 1,
+    "sex": "여",
+    "height_cm": 130,
+    "weight_kg": 31,
+    "nutritional_status": [
+      "정상",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "피로",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 17442/μL, CRP: 8.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "9세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "026",
+    "patient_name": "환자026",
+    "age": 5,
+    "sex": "남",
+    "height_cm": 117,
+    "weight_kg": 13,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "고열",
+      "가래",
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 23749/μL, CRP: 3.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-08",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "12세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "027",
+    "patient_name": "환자027",
+    "age": 2,
+    "sex": "여",
+    "height_cm": 142,
+    "weight_kg": 34,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "가래",
+      "피로",
+      "고열",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 11791/μL, CRP: 6.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-11"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "11세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "028",
+    "patient_name": "환자028",
+    "age": 8,
+    "sex": "남",
+    "height_cm": 150,
+    "weight_kg": 32,
+    "nutritional_status": [
+      "발달지연",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "기침",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 10471/μL, CRP: 6.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "2세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "029",
+    "patient_name": "환자029",
+    "age": 10,
+    "sex": "남",
+    "height_cm": 100,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "천식"
+    ],
+    "symptoms": [
+      "피로",
+      "고열",
+      "기침",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 18226/μL, CRP: 4.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-18"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "6세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "030",
+    "patient_name": "환자030",
+    "age": 3,
+    "sex": "남",
+    "height_cm": 88,
+    "weight_kg": 41,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "기침",
+      "가래",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 19364/μL, CRP: 6.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-14"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "7세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "031",
+    "patient_name": "환자031",
+    "age": 6,
+    "sex": "여",
+    "height_cm": 121,
+    "weight_kg": 42,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "기침",
+      "가래",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 21133/μL, CRP: 8.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-10"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "12세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "032",
+    "patient_name": "환자032",
+    "age": 5,
+    "sex": "남",
+    "height_cm": 127,
+    "weight_kg": 22,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 18399/μL, CRP: 4.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-07",
+      "end": "2024-01-16"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "11세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "033",
+    "patient_name": "환자033",
+    "age": 3,
+    "sex": "남",
+    "height_cm": 129,
+    "weight_kg": 39,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "피로",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 15352/μL, CRP: 6.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-09"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "10세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "034",
+    "patient_name": "환자034",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 87,
+    "weight_kg": 32,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식",
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "기침",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 20863/μL, CRP: 8.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-05"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "12세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "035",
+    "patient_name": "환자035",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 115,
+    "weight_kg": 29,
+    "nutritional_status": [
+      "정상",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "없음"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "가래",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 19279/μL, CRP: 4.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-08"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "2세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "036",
+    "patient_name": "환자036",
+    "age": 4,
+    "sex": "남",
+    "height_cm": 85,
+    "weight_kg": 35,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "고열",
+      "기침",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 11039/μL, CRP: 7.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-12"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "5세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "037",
+    "patient_name": "환자037",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 127,
+    "weight_kg": 32,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "기침",
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 16237/μL, CRP: 7.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-18"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "4세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "038",
+    "patient_name": "환자038",
+    "age": 5,
+    "sex": "여",
+    "height_cm": 128,
+    "weight_kg": 21,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "피로",
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 20502/μL, CRP: 6.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-05"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "5세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "039",
+    "patient_name": "환자039",
+    "age": 5,
+    "sex": "여",
+    "height_cm": 114,
+    "weight_kg": 13,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "고열",
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 19222/μL, CRP: 9.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-11"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "2세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "040",
+    "patient_name": "환자040",
+    "age": 6,
+    "sex": "여",
+    "height_cm": 111,
+    "weight_kg": 15,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 14046/μL, CRP: 5.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-10"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "12세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "041",
+    "patient_name": "환자041",
+    "age": 7,
+    "sex": "여",
+    "height_cm": 108,
+    "weight_kg": 35,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 12563/μL, CRP: 7.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-11"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "5세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "042",
+    "patient_name": "환자042",
+    "age": 3,
+    "sex": "남",
+    "height_cm": 123,
+    "weight_kg": 37,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 19617/μL, CRP: 8.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "043",
+    "patient_name": "환자043",
+    "age": 1,
+    "sex": "여",
+    "height_cm": 114,
+    "weight_kg": 42,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "없음"
+    ],
+    "symptoms": [
+      "가래",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 11236/μL, CRP: 6.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-07",
+      "end": "2024-01-16"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "11세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "044",
+    "patient_name": "환자044",
+    "age": 6,
+    "sex": "여",
+    "height_cm": 93,
+    "weight_kg": 44,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "가래",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 19435/μL, CRP: 8.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-08",
+      "end": "2024-01-14"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "1세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "045",
+    "patient_name": "환자045",
+    "age": 10,
+    "sex": "남",
+    "height_cm": 150,
+    "weight_kg": 25,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "고열",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 13345/μL, CRP: 6.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-10"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "046",
+    "patient_name": "환자046",
+    "age": 10,
+    "sex": "여",
+    "height_cm": 146,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "정상",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 24250/μL, CRP: 5.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-07"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "047",
+    "patient_name": "환자047",
+    "age": 9,
+    "sex": "남",
+    "height_cm": 105,
+    "weight_kg": 43,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 15585/μL, CRP: 7.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-15"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "1세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "048",
+    "patient_name": "환자048",
+    "age": 5,
+    "sex": "남",
+    "height_cm": 105,
+    "weight_kg": 21,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "호흡곤란",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 12188/μL, CRP: 7.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-12"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "2세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "049",
+    "patient_name": "환자049",
+    "age": 8,
+    "sex": "남",
+    "height_cm": 129,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 19144/μL, CRP: 8.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-05"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "4세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "050",
+    "patient_name": "환자050",
+    "age": 10,
+    "sex": "남",
+    "height_cm": 154,
+    "weight_kg": 37,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 15340/μL, CRP: 3.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-11"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "7세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "051",
+    "patient_name": "환자051",
+    "age": 6,
+    "sex": "남",
+    "height_cm": 121,
+    "weight_kg": 28,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 20436/μL, CRP: 3.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-10"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "1세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "052",
+    "patient_name": "환자052",
+    "age": 4,
+    "sex": "여",
+    "height_cm": 137,
+    "weight_kg": 26,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 10618/μL, CRP: 8.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-10"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "5세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "053",
+    "patient_name": "환자053",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 117,
+    "weight_kg": 25,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "가래",
+      "고열",
+      "기침",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 20583/μL, CRP: 5.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-14"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "4세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "054",
+    "patient_name": "환자054",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 124,
+    "weight_kg": 44,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "기침",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 18937/μL, CRP: 3.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-12"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "055",
+    "patient_name": "환자055",
+    "age": 12,
+    "sex": "남",
+    "height_cm": 119,
+    "weight_kg": 29,
+    "nutritional_status": [
+      "정상",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "가래",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 15358/μL, CRP: 8.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-19"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "4세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "056",
+    "patient_name": "환자056",
+    "age": 3,
+    "sex": "남",
+    "height_cm": 94,
+    "weight_kg": 15,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 17015/μL, CRP: 8.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-07"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "1세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "057",
+    "patient_name": "환자057",
+    "age": 10,
+    "sex": "여",
+    "height_cm": 150,
+    "weight_kg": 34,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "천식"
+    ],
+    "symptoms": [
+      "기침",
+      "가래",
+      "피로",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 21252/μL, CRP: 5.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-09"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "12세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "058",
+    "patient_name": "환자058",
+    "age": 5,
+    "sex": "남",
+    "height_cm": 100,
+    "weight_kg": 40,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "기침",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 14288/μL, CRP: 4.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-09"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "12세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "059",
+    "patient_name": "환자059",
+    "age": 4,
+    "sex": "여",
+    "height_cm": 155,
+    "weight_kg": 41,
+    "nutritional_status": [
+      "발달지연",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "가래",
+      "피로",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 12004/μL, CRP: 8.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-07"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "7세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "060",
+    "patient_name": "환자060",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 100,
+    "weight_kg": 16,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식",
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "가래",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 20565/μL, CRP: 5.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-07",
+      "end": "2024-01-15"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "8세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "061",
+    "patient_name": "환자061",
+    "age": 2,
+    "sex": "여",
+    "height_cm": 146,
+    "weight_kg": 13,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "천식"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 14650/μL, CRP: 8.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-15"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "9세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "062",
+    "patient_name": "환자062",
+    "age": 6,
+    "sex": "남",
+    "height_cm": 111,
+    "weight_kg": 15,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "가래",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 19192/μL, CRP: 8.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-07"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "063",
+    "patient_name": "환자063",
+    "age": 2,
+    "sex": "남",
+    "height_cm": 114,
+    "weight_kg": 36,
+    "nutritional_status": [
+      "발달지연",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "피로",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 15876/μL, CRP: 5.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-10"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "4세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "064",
+    "patient_name": "환자064",
+    "age": 8,
+    "sex": "여",
+    "height_cm": 87,
+    "weight_kg": 16,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "피로",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 15330/μL, CRP: 4.0 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-10"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "12세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "065",
+    "patient_name": "환자065",
+    "age": 4,
+    "sex": "여",
+    "height_cm": 102,
+    "weight_kg": 22,
+    "nutritional_status": [
+      "정상",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "기침",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 16995/μL, CRP: 8.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-09"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "8세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "066",
+    "patient_name": "환자066",
+    "age": 6,
+    "sex": "여",
+    "height_cm": 108,
+    "weight_kg": 40,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 15806/μL, CRP: 8.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-12"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "067",
+    "patient_name": "환자067",
+    "age": 1,
+    "sex": "여",
+    "height_cm": 116,
+    "weight_kg": 30,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "없음"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 21287/μL, CRP: 4.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-13"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "10세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "068",
+    "patient_name": "환자068",
+    "age": 7,
+    "sex": "여",
+    "height_cm": 126,
+    "weight_kg": 12,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 13338/μL, CRP: 5.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-11"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "10세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "069",
+    "patient_name": "환자069",
+    "age": 1,
+    "sex": "여",
+    "height_cm": 138,
+    "weight_kg": 25,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "피로",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 16879/μL, CRP: 9.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-14"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "1세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "070",
+    "patient_name": "환자070",
+    "age": 6,
+    "sex": "남",
+    "height_cm": 152,
+    "weight_kg": 43,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "가래",
+      "기침",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 19098/μL, CRP: 6.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-14"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "071",
+    "patient_name": "환자071",
+    "age": 1,
+    "sex": "여",
+    "height_cm": 120,
+    "weight_kg": 32,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "고열",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 21790/μL, CRP: 4.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-17"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "3세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "072",
+    "patient_name": "환자072",
+    "age": 1,
+    "sex": "남",
+    "height_cm": 139,
+    "weight_kg": 13,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "고열",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 12186/μL, CRP: 7.3 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-11"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "10세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "073",
+    "patient_name": "환자073",
+    "age": 2,
+    "sex": "여",
+    "height_cm": 98,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "피로",
+      "기침",
+      "고열",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 21651/μL, CRP: 8.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-14"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "8세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "074",
+    "patient_name": "환자074",
+    "age": 8,
+    "sex": "남",
+    "height_cm": 116,
+    "weight_kg": 30,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "기침",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 10539/μL, CRP: 9.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-11"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "4세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "075",
+    "patient_name": "환자075",
+    "age": 3,
+    "sex": "남",
+    "height_cm": 130,
+    "weight_kg": 27,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "고열",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 20345/μL, CRP: 5.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-09",
+      "end": "2024-01-18"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "076",
+    "patient_name": "환자076",
+    "age": 2,
+    "sex": "여",
+    "height_cm": 99,
+    "weight_kg": 34,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "기침",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 11457/μL, CRP: 7.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-05"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "077",
+    "patient_name": "환자077",
+    "age": 6,
+    "sex": "여",
+    "height_cm": 134,
+    "weight_kg": 39,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "피로",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 15147/μL, CRP: 6.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-16"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "11세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "078",
+    "patient_name": "환자078",
+    "age": 7,
+    "sex": "여",
+    "height_cm": 114,
+    "weight_kg": 41,
+    "nutritional_status": [
+      "정상",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "호흡곤란",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 12292/μL, CRP: 5.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-16"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "079",
+    "patient_name": "환자079",
+    "age": 9,
+    "sex": "남",
+    "height_cm": 108,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "가래",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 15652/μL, CRP: 3.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-10"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "12세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "080",
+    "patient_name": "환자080",
+    "age": 11,
+    "sex": "여",
+    "height_cm": 117,
+    "weight_kg": 37,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "가래",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 18215/μL, CRP: 6.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-04"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "081",
+    "patient_name": "환자081",
+    "age": 7,
+    "sex": "여",
+    "height_cm": 132,
+    "weight_kg": 26,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 12702/μL, CRP: 6.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "3세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "082",
+    "patient_name": "환자082",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 123,
+    "weight_kg": 12,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "없음"
+    ],
+    "symptoms": [
+      "기침",
+      "가래",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 21379/μL, CRP: 6.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-11"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "1세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "083",
+    "patient_name": "환자083",
+    "age": 7,
+    "sex": "남",
+    "height_cm": 145,
+    "weight_kg": 37,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "천식"
+    ],
+    "symptoms": [
+      "가래",
+      "고열",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 23607/μL, CRP: 4.4 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-15"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "12세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "084",
+    "patient_name": "환자084",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 147,
+    "weight_kg": 24,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "천식"
+    ],
+    "symptoms": [
+      "피로",
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 13967/μL, CRP: 7.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "COVID-19"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-06"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "2세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "085",
+    "patient_name": "환자085",
+    "age": 6,
+    "sex": "여",
+    "height_cm": 96,
+    "weight_kg": 12,
+    "nutritional_status": [
+      "발달지연",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "피로",
+      "호흡곤란",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 16037/μL, CRP: 9.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-05",
+      "end": "2024-01-10"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "5세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "086",
+    "patient_name": "환자086",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 116,
+    "weight_kg": 41,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "호흡곤란",
+      "피로",
+      "기침"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 18185/μL, CRP: 5.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-17"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "8세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "087",
+    "patient_name": "환자087",
+    "age": 10,
+    "sex": "여",
+    "height_cm": 126,
+    "weight_kg": 18,
+    "nutritional_status": [
+      "정상",
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 20938/μL, CRP: 4.2 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-08"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "8세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "088",
+    "patient_name": "환자088",
+    "age": 10,
+    "sex": "남",
+    "height_cm": 114,
+    "weight_kg": 12,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "피로",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 23598/μL, CRP: 4.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-13"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "10세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "089",
+    "patient_name": "환자089",
+    "age": 5,
+    "sex": "남",
+    "height_cm": 150,
+    "weight_kg": 18,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "피로",
+      "고열",
+      "호흡곤란",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 22873/μL, CRP: 3.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-06",
+      "end": "2024-01-15"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "6세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "090",
+    "patient_name": "환자090",
+    "age": 5,
+    "sex": "여",
+    "height_cm": 134,
+    "weight_kg": 30,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "없음"
+    ],
+    "symptoms": [
+      "피로",
+      "고열"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 22208/μL, CRP: 4.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-06"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "091",
+    "patient_name": "환자091",
+    "age": 8,
+    "sex": "남",
+    "height_cm": 127,
+    "weight_kg": 36,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음"
+    ],
+    "symptoms": [
+      "기침",
+      "고열",
+      "피로",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 24402/μL, CRP: 7.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-02",
+      "end": "2024-01-11"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "5세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "092",
+    "patient_name": "환자092",
+    "age": 2,
+    "sex": "남",
+    "height_cm": 110,
+    "weight_kg": 31,
+    "nutritional_status": [
+      "영양부족",
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "없음",
+      "선천심장병"
+    ],
+    "symptoms": [
+      "가래",
+      "기침",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 24687/μL, CRP: 7.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-07"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "3세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "093",
+    "patient_name": "환자093",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 110,
+    "weight_kg": 20,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병"
+    ],
+    "symptoms": [
+      "피로",
+      "기침",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 12229/μL, CRP: 5.9 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-05"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "9세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "094",
+    "patient_name": "환자094",
+    "age": 9,
+    "sex": "여",
+    "height_cm": 97,
+    "weight_kg": 33,
+    "nutritional_status": [
+      "영양부족"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "천식",
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "피로",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 38도"
+    ],
+    "lab_test_summary": "WBC: 20621/μL, CRP: 9.6 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-04",
+      "end": "2024-01-12"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "3세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "095",
+    "patient_name": "환자095",
+    "age": 7,
+    "sex": "여",
+    "height_cm": 97,
+    "weight_kg": 17,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "고열",
+      "피로",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 24722/μL, CRP: 6.1 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-01",
+      "end": "2024-01-05"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "10세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "096",
+    "patient_name": "환자096",
+    "age": 11,
+    "sex": "남",
+    "height_cm": 140,
+    "weight_kg": 14,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "천식"
+    ],
+    "symptoms": [
+      "기침",
+      "가래"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 15632/μL, CRP: 6.7 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "HFNC"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-16"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "8세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "097",
+    "patient_name": "환자097",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 103,
+    "weight_kg": 41,
+    "nutritional_status": [
+      "정상"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 24953/μL, CRP: 9.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "HMPV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-07"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "후두염"
+    ],
+    "case_summary": "11세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "098",
+    "patient_name": "환자098",
+    "age": 12,
+    "sex": "여",
+    "height_cm": 91,
+    "weight_kg": 31,
+    "nutritional_status": [
+      "영양부족",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "선천심장병",
+      "천식"
+    ],
+    "symptoms": [
+      "고열",
+      "피로",
+      "호흡곤란"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 39도"
+    ],
+    "lab_test_summary": "WBC: 11140/μL, CRP: 8.8 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Amoxicillin",
+      "Cefotaxime"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-13"
+    },
+    "icu_admission": false,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "6세 여아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "099",
+    "patient_name": "환자099",
+    "age": 6,
+    "sex": "남",
+    "height_cm": 115,
+    "weight_kg": 19,
+    "nutritional_status": [
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환"
+    ],
+    "symptoms": [
+      "가래",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 23237/μL, CRP: 5.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "Influenza"
+    ],
+    "antibiotics_administered": [
+      "Cefotaxime",
+      "Azithromycin"
+    ],
+    "oxygen_therapy": [
+      "Ventilator"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-10",
+      "end": "2024-01-13"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "폐렴"
+    ],
+    "case_summary": "7세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  },
+  {
+    "case_id": "100",
+    "patient_name": "환자100",
+    "age": 8,
+    "sex": "남",
+    "height_cm": 148,
+    "weight_kg": 33,
+    "nutritional_status": [
+      "정상",
+      "발달지연"
+    ],
+    "nursing_requirements": [
+      "침상생활"
+    ],
+    "past_history": [
+      "신경학적 질환",
+      "없음"
+    ],
+    "symptoms": [
+      "고열",
+      "호흡곤란",
+      "기침",
+      "피로"
+    ],
+    "physical_exam": [
+      "호흡음 감소"
+    ],
+    "clinical_observation": [
+      "체온 40도"
+    ],
+    "lab_test_summary": "WBC: 24707/μL, CRP: 6.5 mg/dL",
+    "imaging_findings": "CXR: RLL infiltration",
+    "confirmed_pathogen": [
+      "RSV"
+    ],
+    "antibiotics_administered": [
+      "Azithromycin",
+      "Amoxicillin"
+    ],
+    "oxygen_therapy": [
+      "Nasal Cannula"
+    ],
+    "hospital_stay_duration": {
+      "start": "2024-01-03",
+      "end": "2024-01-12"
+    },
+    "icu_admission": true,
+    "diagnosis": [
+      "모세기관지염"
+    ],
+    "case_summary": "1세 남아, 후두염으로 입원. 주증상은 가래이며 Cefotaxime 투약함.",
+    "timestamp": "2024-08-01"
+  }
+]

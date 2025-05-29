@@ -266,11 +266,11 @@ export const theme = createTheme({
             // backgroundColor: grey[500],
             backgroundColor: blueGrey[100],
             opacity: 0.4,
-            cursor: "not-allowed !important",
+            // cursor: "not-allowed !important",
           },
           '&.MuiButton-containedSecondary.Mui-disabled': {
             backgroundColor: blueGrey[100],
-            cursor: "not-allowed !important",
+            // cursor: "not-allowed !important",
           }
         },
         containedPrimary: {
