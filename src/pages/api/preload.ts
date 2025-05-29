@@ -15,7 +15,7 @@ export default async function handler(req: any, res: any) {
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000";
 
-    const response = await fetch(`${baseUrl}/clinical_cases.json`);
+    const response = await fetch(`${baseUrl}/data/clinical_cases.json`);
     const cases = await response.json();
 
     const collection = await getCollection("clinical-cases-1024-v3");
