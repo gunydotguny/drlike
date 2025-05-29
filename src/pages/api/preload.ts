@@ -1,66 +1,45 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+// /pages/api/preload.ts
+
 import path from "path";
-import fs from "fs";
+import { promises as fs } from "fs";
 import { getCollection } from "../../utils/chromaClient";
 import { getEmbedding } from "../../lib/getEmbeddings";
 import { flattenCaseData } from "../../utils/flattenCaseData";
 
-// JSON 데이터 파일 경로
-const filePath = path.join(process.cwd(), "data", "clinical_cases.json");
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req : any, res : any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
-  
+
   try {
-    const raw = fs.readFileSync(filePath, "utf-8");
+    const filePath = path.join(process.cwd(), "data", "clinical_cases.json");
+    const raw = await fs.readFile(filePath, "utf-8");
     const cases = JSON.parse(raw);
+
     const collection = await getCollection("clinical-cases-1024-v3");
 
-    const results = [];
+    let count = 0;
 
     for (const caseData of cases) {
-      const caseSummary = caseData.case_summary || JSON.stringify(caseData);
-
-      if (!caseData.case_id) {
-        console.warn(`⚠️ case_id 없음`, caseData);
-        results.push({ case_id: null, status: "skipped", reason: "no case_id" });
-        continue;
-      }
-
+      if (!caseData.case_id) continue;
       const embedding = await getEmbedding(caseData);
-      if (!embedding || embedding.length !== 1024) {
-        console.warn(`❌ Invalid embedding for case_id: ${caseData.case_id}`);
-        results.push({ case_id: caseData.case_id, status: "skipped", reason: "invalid embedding" });
-        continue;
-      }
+      if (!embedding || embedding.length !== 1024) continue;
 
-      try {
-        const metadata = flattenCaseData(caseData);
+      const metadata = flattenCaseData(caseData);
 
-        await collection.upsert({
-          ids: [caseData.case_id],
-          embeddings: [embedding],
-          metadatas: [metadata],
-          documents: [caseSummary],
-        });
+      await collection.upsert({
+        ids: [caseData.case_id],
+        embeddings: [embedding],
+        metadatas: [metadata],
+        documents: [caseData.case_summary || JSON.stringify(caseData)],
+      });
 
-        results.push({ case_id: caseData.case_id, status: "uploaded" });
-      } catch (err) {
-        console.error(`❌ Failed to upsert: ${caseData.case_id}`, err);
-        results.push({ case_id: caseData.case_id, status: "error", error: String(err) });
-      }
+      count += 1;
     }
 
-    return res.status(200).json({
-      message: "✅ Preload complete",
-      total: cases.length,
-      uploaded: results.filter((r) => r.status === "uploaded").length,
-      results,
-    });
+    return res.status(200).json({ message: "✅ Preload complete", count });
   } catch (e) {
-    console.error("🔥 API 오류:", e);
+    console.error("🔥 Preload error:", e);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
