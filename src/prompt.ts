@@ -54,7 +54,7 @@ ${JSON.stringify(retrievedCases, null, 2)}
     },
     "icu_admission": false,
     "diagnosis": ["폐렴"],
-    "case_summary": "고열, 침윤, 호흡곤란 등 유사",
+    "case_summary": "5세 여아로, 고열과 기침 증상을 보이며 호흡음 감소 소견이 관찰됨. 체온은 38.5도이며, WBC 15000 및 CRP 6.5로 염증 수치가 상승함. 흉부 엑스레이에서 우하엽 폐렴 소견이 확인되어 Cefotaxime 항생제를 투여 중이며 HFNC를 이용한 산소 치료를 받고 있음. 과거력상 천식을 앓은 병력이 있음.",
     "timestamp": "2024-08-01"
   }
 ]

@@ -90,18 +90,21 @@ export default function App() {
   return (
     <>
       <Box sx={{
-        position: 'fixed',
-        top: `50%`,
-        left: `50%`,
-        transform: `translate(-50%, -50%)`,
-        borderRadius: `8px`,
-        width: `960px`,
-        height: `100%`,
-        maxHeight: `816px`,
-        bgcolor: `#ffffff`,
-        boxShadow: `0 4px 12px 0 rgba(19, 20, 22, 0.08)`,
-        display: 'flex',
-        flexDirection: 'column',
+        backgroundColor: '#ffffff',
+        "@media screen and (min-width: 601px)": {
+          position: 'fixed',
+          top: `50%`,
+          left: `50%`,
+          transform: `translate(-50%, -50%)`,
+          borderRadius: `8px`,
+          width: `960px`,
+          height: `100%`,
+          maxHeight: `816px`,
+          bgcolor: `#ffffff`,
+          boxShadow: `0 4px 12px 0 rgba(19, 20, 22, 0.08)`,
+          display: 'flex',
+          flexDirection: 'column',
+        }
       }}>
         <Header />
         {/* {loading === true &&
@@ -129,7 +132,14 @@ export default function App() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: alpha('#ffffff', 0.4)
+            backgroundColor: alpha('#ffffff', 0.4),
+            "@media screen and (max-width: 600px)": {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }
           }}>
             <CircularProgress />
             <Typo sx={{
@@ -140,19 +150,23 @@ export default function App() {
           </Box>
           : screen === 'result' ?
             <Box sx={{
-              flex: 1,
-              display: 'flex',
-               overflow: 'hidden' 
+              "@media screen and (min-width: 601px)": {
+                flex: 1,
+                display: 'flex',
+                overflow: 'hidden'
+              },
             }}>
               <PatientSummary
                 formData={formData}
                 onEdit={handleEdit}
               />
               <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                flex: 1,
-                minHeight: 0,
+                "@media screen and (min-width: 601px)": {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  flex: 1,
+                  minHeight: 0,
+                },
               }}>
                 <Box sx={{
                   display: 'flex',
@@ -217,6 +231,9 @@ export default function App() {
                     gap: 2,
                     p: 3,
                     mt: -3,
+                    "@media screen and (max-width: 600px)": {
+                      gridTemplateColumns: "1fr",
+                    }
                   }}>
                     {recommendationResult.map((item, index) => (
                       <ResultCard key={index} item={item} onClick={() => { setSelectedDetail(item) }} />
@@ -340,9 +357,19 @@ function PresetItem({ item, checked, onClick }: { item: { label: string, value: 
     boxShadow: checked ? `4px 4px 16px 4px rgba(19, 20, 22, 0.16)` : ``,
     transition: `all 0.35s ease`,
     '& *': { cursor: 'pointer !important' },
-    cursor: 'pointer !important'
+    cursor: 'pointer !important',
+    "@media screen and (max-width: 600px)": {
+      flexDirection: 'column',
+      alignItems: 'flex-start'
+    }
   }}>
-    <Checkbox checked={checked} sx={{ '& .MuiSvgIcon-root': { fontSize: 24 }, mr: 1, transition: `all 0.35s ease` }} />
+    <Checkbox checked={checked} sx={{
+      "@media screen and (max-width: 600px)": {
+        ml: -1.5,
+        mt: -1.5
+      },
+      '& .MuiSvgIcon-root': { fontSize: 24 }, mr: 1, transition: `all 0.35s ease`,
+    }} />
     <Box>
       <Typo sx={{
         fontSize: `17px`,
@@ -423,7 +450,11 @@ const toggleStyle = {
 
 function FormSection({ formData, onChange, onCheckboxGroupChange, presetValue }: any) {
   return (
-    <Stack direction={'row'} gap={2}>
+    <Stack direction={'row'} gap={2} sx={{
+      "@media screen and (max-width: 600px)": {
+        flexDirection: 'column !important'
+      }
+    }}>
       <Box sx={{ flex: 1 }}>
         <Box sx={{ mb: 3 }}>
           <Typo sx={{ fontSize: 15, color: '#515867', mb: 1, ' span': { color: '#ff0000' } }}>환아명<span> *</span></Typo>
@@ -862,11 +893,13 @@ function PatientSummary({ formData, onEdit }: { formData: any, onEdit: any }) {
   );
   return (
     <Box sx={{
-      minHeight: 0,
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '320px',
+      "@media screen and (min-width: 601px)": {
+        minHeight: 0,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '320px',
+      },
     }}>
       <Box sx={{
         display: 'flex',
@@ -1044,8 +1077,10 @@ function CaseDetailModal({ item, onClose }: { item: any, onClose: () => void }) 
             환아 기본정보
           </Typo>
           <Box sx={{
-            width: '100%',
-            display: 'flex',
+            "@media screen and (min-width: 601px)": {
+              width: '100%',
+              display: 'flex',
+            },
           }}>
             <Stack spacing={1} sx={{
               flex: 1,
@@ -1070,9 +1105,12 @@ function CaseDetailModal({ item, onClose }: { item: any, onClose: () => void }) 
               borderRadius: '4px',
               p: `12px 16px`,
               backgroundColor: '#F5F6F7',
+              "@media screen and (max-width: 600px)": {
+                mt: 2,
+              },
             }}>
               <Typo
-                lines={4}
+                lines={100}
                 sx={{
                   fontSize: 13,
                   color: '#515867'
@@ -1097,6 +1135,9 @@ function CaseDetailModal({ item, onClose }: { item: any, onClose: () => void }) 
             display: 'grid',
             gridTemplateColumns: "1fr 1fr",
             gap: 2,
+            "@media screen and (max-width: 600px)": {
+              gridTemplateColumns: "1fr",
+            }
           }}>
             {entries.map(([key, label]) =>
               <InfoRow
