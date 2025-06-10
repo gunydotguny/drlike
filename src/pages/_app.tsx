@@ -32,6 +32,7 @@ import {
 import Script from "next/script";
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Analytics } from "@vercel/analytics/next"
 
 declare global {
   interface Window {
@@ -101,6 +102,7 @@ function MyApp(props: MyAppProps) {
       <Script src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js" strategy="beforeInteractive" />
 
       <RecoilRoot>
+        <Analytics />
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Global styles={reset} />
