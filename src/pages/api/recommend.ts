@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
 import { getEmbedding } from "../../lib/getEmbeddings";
 import { generatePrompt } from "../../prompt";
-import axios from "axios";
 
 const openai = new OpenAI({
   apiKey: process.env.UPSTAGE_API_KEY!,
@@ -37,11 +36,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // 1. 컬렉션 목록 조회
-    const listRes = await axios.get(`${CHROMA_HOST}/api/v1/collections`);
+    const listRes = await fetch(`${CHROMA_HOST}/api/v1/collections`);
+    const data = await listRes.json();
 
     // 2. 응답 구조 보정
-    const collections = listRes.data;
-  
+    const collections = Array.isArray(data)
+      ? data
+      : Array.isArray(data.collections)
+      ? data.collections
+      : [];
 
     console.log("📦 실제 collections 목록:", collections.map((c: any) => c.name));
 
