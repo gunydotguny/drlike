@@ -45,6 +45,8 @@ export default function App() {
   }
   const handleRecommend = async () => {
     setLoading(true);
+      console.log("🧪 CHROMA_HOST:", process.env.CHROMA_HOST);
+
     try {
       console.log("✅ API 호출 시작! 벡터 DB는 100건 기준 1~3분 소요");
       const response = await fetch("/api/recommend", {
@@ -55,7 +57,6 @@ export default function App() {
       const json = await response.json();
       console.log("📥 응답 전체:", json); // ← 이거 먼저 찍어보자
       const { recommendationList, raw, debug, reason } = json
-
       // ✅ 크롬 개발자도구에 출력
       if (debug) {
         console.log("✅ 벡터 길이:", 1024);

@@ -41,7 +41,6 @@ async function main() {
         { headers: { "Content-Type": "application/json" } }
       )
       .then(r => r.data);
-
   console.log(`✅ 컬렉션 ID: ${col.id}`);
 
   // 2) 케이스별 문서 업로드

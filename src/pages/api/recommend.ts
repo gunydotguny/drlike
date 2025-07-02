@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
 import { getEmbedding } from "../../lib/getEmbeddings";
 import { generatePrompt } from "../../prompt";
+import axios from "axios";
 
 const openai = new OpenAI({
   apiKey: process.env.UPSTAGE_API_KEY!,
@@ -31,22 +32,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const embedding = await getEmbedding(formData);
+    if (!embedding || embedding.length !== 1024) {
+      return res.status(400).json({ error: "Invalid embedding result" });
+    }
 
-    // 1. 컬렉션 ID 가져오기
-    const listRes = await fetch(`${CHROMA_HOST}/api/v1/collections`);
-    const collections = await listRes.json();
+    // 1. 컬렉션 목록 조회
+    const listRes = await axios.get(`${CHROMA_HOST}/api/v1/collections`);
+
+    // 2. 응답 구조 보정
+    const collections = listRes.data;
+  
+
+    console.log("📦 실제 collections 목록:", collections.map((c: any) => c.name));
+
     const collection = collections.find((c: any) => c.name === COLLECTION_NAME);
     if (!collection) {
+      console.error("❌ 컬렉션을 찾을 수 없습니다:", COLLECTION_NAME);
       return res.status(500).json({ error: "Collection not found" });
     }
 
     const collectionId = collection.id;
 
-    // 2. 문서 수
+    // 3. 문서 수 확인
     const countRes = await fetch(`${CHROMA_HOST}/api/v1/collections/${collectionId}/count`);
     const totalCount = await countRes.text();
 
-    // 3. 유사 증례 검색
+    // 4. 유사 문서 검색
     const queryRes = await fetch(`${CHROMA_HOST}/api/v1/collections/${collectionId}/query`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,13 +70,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!queryRes.ok) throw new Error(`Query failed: ${queryRes.status}`);
     const queryData = await queryRes.json();
+
     const retrievedCases = queryData.metadatas?.[0] || [];
     const distances = queryData.distances?.[0] || [];
 
-    // const filteredCases = retrievedCases.filter((_, i) => distances[i] < 0.65);
-    const filteredCases = retrievedCases;
+    const filteredCases = retrievedCases; // TODO: 거리 필터링하려면 여기 조정
 
     const prompt = generatePrompt(formData, filteredCases, presetValue);
+
     const debug = {
       totalCount: parseInt(totalCount, 10),
       retrieved: retrievedCases.length,
@@ -82,6 +94,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
 
+    // 5. LLM 호출
     const completion = await openai.chat.completions.create({
       model: "solar-pro",
       messages: [{ role: "user", content: prompt }],
@@ -92,6 +105,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json({ recommendationList: [], reason: "empty_llm_response", debug });
     }
 
+    // 6. JSON 파싱
     let parsed: any;
     try {
       const clean = stripMarkdownFence(raw);
@@ -101,9 +115,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     let recommendationList: any[] = [];
-    if (Array.isArray(parsed)) recommendationList = parsed;
-    else if (parsed.cases && Array.isArray(parsed.cases)) recommendationList = parsed.cases;
-    else {
+    if (Array.isArray(parsed)) {
+      recommendationList = parsed;
+    } else if (parsed.cases && Array.isArray(parsed.cases)) {
+      recommendationList = parsed.cases;
+    } else {
       return res.status(200).json({
         recommendationList: [],
         reason: "invalid_output_structure",
@@ -115,6 +131,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ recommendationList, raw, debug });
   } catch (e: any) {
     console.error("🔥 API 전체 오류:", e.message || e);
-    return res.status(500).json({ error: "Internal Server Error", detail: e.message });
+    return res.status(500).json({
+      error: "Internal Server Error",
+      detail: e.message,
+    });
   }
 }
