@@ -13,6 +13,7 @@ export const getEmbedding = async (caseData: any): Promise<number[]> => {
         input: text
     });
     const embedding = response.data[0].embedding;
-    console.log("✅ 벡터 길이:", embedding.length);
+      console.log("✅ 벡터 길이:", embedding);
+        // console.log("📄 요약문 원문:", embedding.);
     return embedding;
 };

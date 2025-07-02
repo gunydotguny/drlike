@@ -79,8 +79,7 @@
     "export": "next export",
     "type-check": "tsc",
     "pm2-start": "pm2 start yarn --interpreter bash --name app -- start",
-    "preload": "ts-node -P tsconfig.scripts.json ./src/scripts/preload.ts",
-    "chroma": "chroma run --path ./chroma_data"
+    "preload": "ts-node -P tsconfig.scripts.json ./src/scripts/preload.ts"
   },
   "browserslist": {
     "production": [

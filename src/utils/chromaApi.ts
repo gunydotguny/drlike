@@ -1,7 +1,7 @@
 // utils/chromaApi.ts
 import axios from "axios";
 
-const HOST = process.env.NEXT_PUBLIC_CHROMA_HOST!; // ex) "https://chroma-production-889a.up.railway.app"
+const HOST = process.env.NEXT_PUBLIC_CHROMA_HOST!; // "https://chroma-production-889a.up.railway.app"
 const V1 = `${HOST}/api/v1`;
 
 export interface CollectionInfo {
