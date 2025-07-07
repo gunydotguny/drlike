@@ -1,0 +1,59 @@
+[
+    {
+        "age_months": 36,
+        "sex": "남아",
+        "height_cm": 95,
+        "weight_kg": 14,
+        "nutrition_status": [
+            "정상 성장 중"
+        ],
+        "required_nursing": [
+            "자가 보행 가능"
+        ],
+        "past_history_summary": "태열로 인한 피부 치료 병력",
+        "underlying_disease_summary": "없음",
+        "symptoms_summary": "기침, 가래",
+        "physical_exam_summary": "폐 청진상 정상",
+        "body_temperature": 37.2,
+        "respiratory_rate": 22,
+        "oxygen_saturation": 98
+    },
+    {
+        "age_months": 18,
+        "sex": "여아",
+        "height_cm": 80,
+        "weight_kg": 10,
+        "nutrition_status": [
+            "체중 증가 지연"
+        ],
+        "required_nursing": [
+            "침상 안정 필요"
+        ],
+        "past_history_summary": "미숙아로 태어남",
+        "underlying_disease_summary": "선천성 심장질환",
+        "symptoms_summary": "호흡 곤란, 고열",
+        "physical_exam_summary": "천명음",
+        "body_temperature": 39.0,
+        "respiratory_rate": 35,
+        "oxygen_saturation": 94
+    },
+    {
+        "age_months": 60,
+        "sex": "남아",
+        "height_cm": 110,
+        "weight_kg": 18,
+        "nutrition_status": [
+            "정상 성장 중"
+        ],
+        "required_nursing": [
+            "자가 보행 가능"
+        ],
+        "past_history_summary": "기관지염 입원 치료 병력",
+        "underlying_disease_summary": "천식",
+        "symptoms_summary": "기침, 호흡 곤란",
+        "physical_exam_summary": "폐 기저부 수포음",
+        "body_temperature": 38.5,
+        "respiratory_rate": 28,
+        "oxygen_saturation": 96
+    }
+]
