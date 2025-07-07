@@ -1,4 +1,4 @@
-// lib/prompts/sampleEmbeddingPrompt.ts
+// api/prompts/sampleEmbeddingPrompt.ts
 
 export const sampleEmbeddingPrompt = `
 다음은 소아 호흡기 질환 증례 데이터입니다.  

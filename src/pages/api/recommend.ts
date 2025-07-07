@@ -1,3 +1,5 @@
+// api/recommend.ts
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
 import { getEmbedding } from "../../lib/getEmbeddings";
@@ -32,10 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let embeddingMode = "preset";
     let collectionName = "drlike-case-collection";
 
-    if (promptType === "prompt2") {
-      embeddingMode = "user";
-      collectionName = "pediatric_cases_structured_test";
-    } else if (promptType === "prompt3") {
+    if (promptType === "prompt2" || promptType === "prompt3") {
       embeddingMode = "user";
       collectionName = "pediatric_cases_structured_test";
     }
@@ -76,7 +75,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify({
         query_embeddings: [embedding],
         n_results: 10,
-        include: ["metadatas", "distances"],
+        include: ["metadatas", "distances", "ids", "documents"],  // ✅ 추가됨
       }),
     });
 
@@ -88,7 +87,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const queryData = await queryRes.json();
-    const retrievedCases = queryData.metadatas?.[0] || [];
+    const retrievedCases = (queryData.metadatas?.[0] || []).map((metadata: any, idx: number) => ({
+      id: queryData.ids?.[0]?.[idx] || "",
+      document: queryData.documents?.[0]?.[idx] || "",
+      metadata,
+      distance: queryData.distances?.[0]?.[idx] || null,
+    }));
     console.log("✅ Step 3: 벡터 검색 결과 건수:", retrievedCases.length);
 
     // ✅ 프롬프트 생성
@@ -135,6 +139,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({
       recommendationList,
       restructured,
+      retrievedCases,  // ✅ 검색된 요약문+ID+JSON도 반환 (프론트에서 바로 활용 가능)
       debug: {
         promptLength: prompt.length,
         retrieved: retrievedCases.length,

@@ -1,3 +1,5 @@
+// api/prompts/llmRestructurePrompt.ts
+
 export async function llmRestructurePrompt(recommendationList: any[]): Promise<string> {
     const prompt = `
 다음은 소아 호흡기 질환 관련 추천 증례 목록입니다.

@@ -1,4 +1,4 @@
-// lib/prompts/userEmbeddingPrompt.ts
+// api/prompts/userEmbeddingPrompt.ts
 
 export const userEmbeddingPrompt = `
 다음은 사용자가 입력한 소아 호흡기 질환 관련 증례 정보입니다.  

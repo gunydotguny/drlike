@@ -34,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const colId = col.id;
         let count = 0;
         let shownLogs = 0;  // ✅ 로그 출력 카운터
+
         // 3. 증례 데이터 loop (자동 ID 생성)
         for (let idx = 0; idx < cases.length; idx++) {
             const caseData = cases[idx];
@@ -56,7 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 shownLogs++;
             }
 
-            // ChromaDB 저장
+            // ✅ ChromaDB 저장 (JSON 전체 메타데이터 포함)
             await axios.post(
                 `${CHROMA_HOST}/api/v1/collections/${colId}/add`,
                 {
@@ -65,8 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     embeddings: [embedding],
                     metadatas: [
                         {
-                            patient_name: caseData.patient_name || "미입력",
-                            diagnosis: caseData.diagnosis || "미입력",
+                            ...caseData,  // ✅ JSON 전체 포함
                         },
                     ],
                 },

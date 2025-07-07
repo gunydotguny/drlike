@@ -1,6 +1,8 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function App() {
+    const [retrievedCases, setRetrivedCases] = useState<any>(null)
     async function handleSamplePreload() {
         console.log("🚀 Preload 시작합니다...");
         try {
@@ -58,6 +60,7 @@ export default function App() {
             });
             const data = await response.json();
             console.log("추천 결과:", data);
+            setRetrivedCases(data)
         } catch (e) {
             console.error("추천 실패", e);
         }
@@ -91,6 +94,16 @@ export default function App() {
             <Button onClick={handleRecommend}>
                 Get Result (include User Input Embedding)
             </Button>
+            {retrievedCases && retrievedCases.map((item: any, index: any) => {
+                return <Stack key={index} direction={'column'} spacing={0.5}>
+                    <Typography sx={{ fontWeight: 'bold' }}>ID</Typography>
+                    <Typography>{item.id}</Typography>
+                    <Typography sx={{ fontWeight: 'bold' }}>document</Typography>
+                    <Typography>{item.document}</Typography>
+                    <Typography sx={{ fontWeight: 'bold' }}>metadata</Typography>
+                    <Typography>{item.metadata}</Typography>
+                </Stack>
+            })}
         </Stack>
     );
 }
