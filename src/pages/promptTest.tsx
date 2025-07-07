@@ -1,9 +1,13 @@
+import LoadingButton from "@mui/lab/LoadingButton";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 
 export default function App() {
-    const [retrievedCases, setRetrivedCases] = useState<any>(null)
+    const [data, setData] = useState<any>(null)
+    const [loading, setLoading] = useState<any>(false)
     async function handleSamplePreload() {
+        setLoading(true)
+        setData(null)
         console.log("🚀 Preload 시작합니다...");
         try {
             const res = await fetch("/api/test/preload", { method: "POST" });
@@ -12,9 +16,12 @@ export default function App() {
         } catch (error) {
             console.error("🔥 Preload 실패:", error);
         }
+        setLoading(false)
     }
 
     async function handleUserEmbedding() {
+        setLoading(true)
+        setData(null)
         console.log("🚀 사용자 임베딩 시작합니다...");
         try {
             // ✅ 반드시 fetch로 파일을 불러와야 함 (프론트에서는 fs 안됨)
@@ -38,9 +45,12 @@ export default function App() {
         } catch (error) {
             console.error("🔥 사용자 임베딩 실패:", error);
         }
+        setLoading(false)
     }
 
     const handleRecommend = async () => {
+        setLoading(true)
+        setData(null)
         console.log("🚀 증례 추천 시작합니다...");
         try {
             const [inputSamples, presetSamples] = await Promise.all([
@@ -48,7 +58,7 @@ export default function App() {
                 fetch("/data/user_preset_sample.json").then(res => res.json())
             ]);
 
-            const response = await fetch("/api/recommend", {
+            const response = await fetch("/api/test/recommend", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -60,10 +70,11 @@ export default function App() {
             });
             const data = await response.json();
             console.log("추천 결과:", data);
-            setRetrivedCases(data)
+            setData(data)
         } catch (e) {
             console.error("추천 실패", e);
         }
+        setLoading(false)
     };
 
     return (
@@ -85,26 +96,47 @@ export default function App() {
                 p: 2,
             }
         }}>
-            <Button onClick={handleSamplePreload}>
+            <LoadingButton onClick={handleSamplePreload} loading={loading} variant="contained">
                 Sample Preload
-            </Button>
-            <Button onClick={handleUserEmbedding}>
-                User Embedding
-            </Button>
-            <Button onClick={handleRecommend}>
-                Get Result (include User Input Embedding)
-            </Button>
-            {retrievedCases && retrievedCases.map((item: any, index: any) => {
-                return <Stack key={index} direction={'column'} spacing={0.5}>
-                    <Typography sx={{ fontWeight: 'bold' }}>ID</Typography>
-                    <Typography>{item.id}</Typography>
-                    <Typography sx={{ fontWeight: 'bold' }}>document</Typography>
-                    <Typography>{item.document}</Typography>
-                    <Typography sx={{ fontWeight: 'bold' }}>metadata</Typography>
-                    <Typography>{item.metadata}</Typography>
+            </LoadingButton>
+            <LoadingButton onClick={handleUserEmbedding} loading={loading} variant="contained">
+                User Input Embedding
+            </LoadingButton>
+            <LoadingButton onClick={handleRecommend} loading={loading} variant="contained">
+                Get Results (include User Input Embedding)
+            </LoadingButton>
+            <Box sx={{
+                flex: 1,
+                overflowY: 'auto'
+            }}>
+                <Stack direction={'column'} spacing={2}>
+                    {data && data.retrievedCases.map((item: any, index: any) => {
+                        return <Stack key={index} direction={'column'} spacing={0.5} sx={{
+                            p: 2, border: `1px solid #000000`
+                        }}>
+                            <Typography sx={{ fontWeight: 'bold' }}>ID</Typography>
+                            <Typography>{item.id}</Typography>
+
+                            <Typography sx={{ fontWeight: 'bold' }}>document</Typography>
+                            <Typography>{item.document}</Typography>
+
+                            <Typography sx={{ fontWeight: 'bold' }}>metadata</Typography>
+                            <pre style={{
+                                background: '#f5f5f5',
+                                padding: '1rem',
+                                borderRadius: '8px',
+                                overflowX: 'auto',
+                                whiteSpace: 'pre-wrap',
+                                wordBreak: 'break-word',
+                                fontSize: 14,
+                            }}>
+                                {JSON.stringify(item.metadata, null, 2)}
+                            </pre>
+                        </Stack>
+                    })}
                 </Stack>
-            })}
-        </Stack>
+            </Box>
+        </Stack >
     );
 }
 

@@ -8,6 +8,18 @@ const CHROMA_HOST = process.env.CHROMA_HOST!;
 const COLLECTION_NAME = "pediatric_cases_structured_test";  // 새 테스트 컬렉션 이름
 const CASES_JSON_URL = path.join(process.cwd(), "public", "data", "sample_cases.json");
 
+function flattenObject(obj: any, prefix = '') {
+    return Object.keys(obj).reduce((acc, key) => {
+        const pre = prefix.length ? `${prefix}_${key}` : key;
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            Object.assign(acc, flattenObject(obj[key], pre));
+        } else {
+            acc[pre] = obj[key];
+        }
+        return acc;
+    }, {} as Record<string, any>);
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method Not Allowed" });
@@ -52,28 +64,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const { summary, embedding } = result;
 
+            console.log(`    └ ✅ 임베딩 벡터 길이: ${embedding.length}`);
+
+            const isZeroVector = embedding.every((v) => v === 0);
+            if (isZeroVector) {
+                console.warn("⚠️ 경고: 벡터가 전부 0으로만 채워져 있음! 확인 필요!");
+            }
+
             if (shownLogs < 5) {
                 console.log(`📝 요약문 ${shownLogs + 1}:`, summary);
                 shownLogs++;
             }
 
-            // ✅ ChromaDB 저장 (JSON 전체 메타데이터 포함)
+            const flattenedMetadata = flattenObject(caseData);
+
+            // ✅ ChromaDB 저장 (Flatten된 JSON 메타데이터 포함)
             await axios.post(
                 `${CHROMA_HOST}/api/v1/collections/${colId}/add`,
                 {
                     ids: [caseId],
                     documents: [summary],
                     embeddings: [embedding],
-                    metadatas: [
-                        {
-                            ...caseData,  // ✅ JSON 전체 포함
-                        },
-                    ],
+                    metadatas: [flattenedMetadata],
                 },
                 { headers: { "Content-Type": "application/json" } }
             );
             console.log(`    └ ✅ 요약문 생성 성공 (길이: ${summary.length}자)`);
-            console.log(`    └ ✅ 임베딩 성공 (벡터 길이: ${embedding.length})`);
             console.log(`    └ ✅ ChromaDB 저장 완료`);
             count++;
         }
