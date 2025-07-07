@@ -56,12 +56,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const queryData = await queryRes.json();
         const retrievedCases = (queryData.metadatas?.[0] || []).map((metadata: any, idx: number) => ({
-            id: metadata.case_id,
+            id: queryData.ids?.[0]?.[idx] || metadata.case_id,  // 안정적
             document: queryData.documents?.[0]?.[idx] || "",
             metadata,
             distance: queryData.distances?.[0]?.[idx] || null,
         }));
-
         return res.status(200).json({
             recommendationList: retrievedCases,
             retrievedCases,

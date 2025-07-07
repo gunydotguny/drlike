@@ -34,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // ✅ 여기서 JSON.stringify 추가
     const embedding = await getEmbedding(JSON.stringify(formData, null, 2));
-    
+
     if (!embedding || embedding.length !== 4096) {
       return res.status(400).json({ error: "Invalid embedding result" });
     }
@@ -71,7 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify({
         query_embeddings: [embedding],
         n_results: 10,
-        include: ["metadatas", "distances"],
+        include: ["ids", "metadatas", "distances"]
       }),
     });
 
