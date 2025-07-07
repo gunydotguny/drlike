@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
 import { getEmbedding } from "../../lib/getEmbeddings";
 import { generatePrompt } from "../../prompt";
-import { llmRestructurePrompt } from "../test/prompt/llm_restructure_prompt";
-import { getUserEmbedding } from "../test/lib/getUserEmbedding";
+import { llmRestructurePrompt } from "./prompt/llm_restructure_prompt";
+import { getUserEmbedding } from "../../lib/getUserEmbedding";
 
 const openai = new OpenAI({
   apiKey: process.env.UPSTAGE_API_KEY!,

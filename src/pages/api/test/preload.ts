@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { getSampleEmbedding } from "../../test/lib/getSampleEmbedding";
+import { getSampleEmbedding } from "../../../lib/getSampleEmbedding";
 import path from "path";
 import fs from "fs/promises";
 

@@ -1,6 +1,6 @@
 import OpenAI from "openai";
-import { getEmbedding } from "../../../lib/getEmbeddings";
-import { userEmbeddingPrompt } from "../prompt/user_embedding_prompt";
+import { getEmbedding } from "./getEmbeddings";
+import { userEmbeddingPrompt } from "../pages/api/prompt/user_embedding_prompt";
 
 const openai = new OpenAI({
     apiKey: process.env.UPSTAGE_API_KEY!,

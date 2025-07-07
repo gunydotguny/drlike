@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserEmbedding } from "../../test/lib/getUserEmbedding";
+import { getUserEmbedding } from "../../../lib/getUserEmbedding";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "POST") {
