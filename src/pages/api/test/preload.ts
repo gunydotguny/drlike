@@ -47,14 +47,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         let count = 0;
         let shownLogs = 0;  // ✅ 로그 출력 카운터
 
-        // 3. 증례 데이터 loop (자동 ID 생성)
+        // 기존 증례 loop 내부 (딱 여기에 추가!)
         for (let idx = 0; idx < cases.length; idx++) {
             const caseData = cases[idx];
             const caseId = `case_${idx + 1}`;  // ✅ 자동 ID 생성
 
-            console.log(
-                `[${idx + 1}/${cases.length}] ▶️ ID: ${caseId}`
-            );
+            console.log(`[${idx + 1}/${cases.length}] ▶️ ID: ${caseId}`);
 
             const result = await getSampleEmbedding(caseData);
             if (!result) {
@@ -64,11 +62,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const { summary, embedding } = result;
 
+            console.log("🪄 summary 원본:", summary);
+            console.log("🪄 summary 길이:", summary?.length);
+            console.log("🪄 summary 문자:", JSON.stringify(summary));
             console.log(`    └ ✅ 임베딩 벡터 길이: ${embedding.length}`);
 
             const isZeroVector = embedding.every((v) => v === 0);
             if (isZeroVector) {
                 console.warn("⚠️ 경고: 벡터가 전부 0으로만 채워져 있음! 확인 필요!");
+            }
+
+            // ✅ ✅ ✅ 추가된 테스트 임베딩 (딱 한 번만 실행)
+            if (idx === 0) {
+                const testText = `이 환자는 폐렴으로 입원 중이며, 상태는 안정적입니다. 항생제를 투여하고 있습니다.`;
+                const testEmbeddingResult = await getSampleEmbedding({ dummy: testText });
+                console.log("🧪 테스트 자연어 임베딩 벡터 길이:", testEmbeddingResult.embedding.length);
+                console.log("🧪 테스트 자연어 임베딩 0 벡터 여부:", testEmbeddingResult.embedding.every((v) => v === 0));
             }
 
             if (shownLogs < 5) {
@@ -78,7 +87,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const flattenedMetadata = flattenObject(caseData);
 
-            // ✅ ChromaDB 저장 (Flatten된 JSON 메타데이터 포함)
             await axios.post(
                 `${CHROMA_HOST}/api/v1/collections/${colId}/add`,
                 {
@@ -94,9 +102,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             count++;
         }
 
+
         return res.status(200).json({ message: "✅ Preload complete", count });
     } catch (e: any) {
-        console.error("🔥 Preload error:", e.message || e);
+        console.error("🔥 Preload error:", e.response?.data || e.message || e);
         return res.status(500).json({ error: "Internal Server Error" });
     }
 }

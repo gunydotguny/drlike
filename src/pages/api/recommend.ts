@@ -30,8 +30,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: "Missing formData or presetValue" });
     }
 
-    const embedding = await getEmbedding(formData);
-    if (!embedding || embedding.length !== 1024) {
+    console.log("임베딩 입력 값 타입:", typeof formData);  // ✅ 타입 체크 로그 추가
+
+    // ✅ 여기서 JSON.stringify 추가
+    const embedding = await getEmbedding(JSON.stringify(formData, null, 2));
+    
+    if (!embedding || embedding.length !== 4096) {
       return res.status(400).json({ error: "Invalid embedding result" });
     }
 

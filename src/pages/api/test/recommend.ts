@@ -6,21 +6,6 @@ import { getUserEmbedding } from "../../../lib/getUserEmbedding";
 const CHROMA_HOST = process.env.CHROMA_HOST!;
 const COLLECTION_NAME = "pediatric_cases_structured_test";
 
-function restructureCase(caseItem: any) {
-    const fixedFields = {
-        patient_name: caseItem.metadata.patient_name,
-        age_months: caseItem.metadata.age_months,
-        sex: caseItem.metadata.sex,
-        diagnosis: caseItem.metadata.diagnosis,
-    };
-
-    return {
-        ...caseItem,
-        fixed_fields: fixedFields,
-        other_fields: { ...caseItem.metadata },  // ✅ 메타데이터 전체 넣기!
-    };
-}
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method Not Allowed" });
@@ -35,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         const embedding = result.embedding;
 
-        if (!embedding || embedding.length !== 1024) {
+        if (!embedding || embedding.length !== 4096) {
             return res.status(400).json({ error: "Invalid embedding result" });
         }
 
@@ -59,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 query_embeddings: [embedding],
-                n_results: 10,
+                n_results: 5,
                 include: ["documents", "metadatas", "distances"],
             }),
         });
@@ -77,10 +62,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             distance: queryData.distances?.[0]?.[idx] || null,
         }));
 
-        const restructuredCases = retrievedCases.map(restructureCase);
-
         return res.status(200).json({
-            recommendationList: restructuredCases,
+            recommendationList: retrievedCases,
             retrievedCases,
             debug: {
                 promptType,

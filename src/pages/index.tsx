@@ -59,7 +59,7 @@ export default function App() {
       const { recommendationList, raw, debug, reason } = json
       // ✅ 크롬 개발자도구에 출력
       if (debug) {
-        console.log("✅ 벡터 길이:", 1024);
+        console.log("✅ 벡터 길이:", 4096);
         console.log("💾 총 저장 건수:", debug.totalCount);
         console.log("🔍 검색된 건수:", debug.retrieved);
         console.log("✅ 필터 통과 건수:", debug.filtered);
