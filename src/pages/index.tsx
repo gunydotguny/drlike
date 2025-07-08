@@ -12,6 +12,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useRouter } from "next/router";
 
 type ScreenState = 'input' | 'result';
 
@@ -45,7 +46,7 @@ export default function App() {
   }
   const handleRecommend = async () => {
     setLoading(true);
-      console.log("🧪 CHROMA_HOST:", process.env.CHROMA_HOST);
+    console.log("🧪 CHROMA_HOST:", process.env.CHROMA_HOST);
 
     try {
       console.log("✅ API 호출 시작! 벡터 DB는 100건 기준 1~3분 소요");
@@ -314,6 +315,7 @@ export default function App() {
 }
 
 function Header() {
+  const router = useRouter()
   return <Box sx={{
     display: 'flex',
     alignItems: 'center',
@@ -342,6 +344,9 @@ function Header() {
         소아 감염, 호흡기, 알레르기 진단을  간편하게
       </Typo>
     </Box>
+    <Button onClick={() => {router.push('/chatTest')}}>
+      채팅 테스트
+    </Button>
   </Box>
 }
 
