@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Typography, TextareaAutosize, Button, Stack, Dialog, IconButton } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, Box, Typography, TextareaAutosize, Button, Stack, Dialog, IconButton } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Typo from "../components/atoms/Typo";
 import { useRouter } from "next/router";
@@ -13,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function ChatInterface() {
+    const [careEnvironment, setCareEnvironment] = useState("first_visit");
     const [selectedDetail, setSelectedDetail] = useState<any | null>(null);
     const [messages, setMessages] = useState<{ text: string; from: "user" | "bot"; cases?: any[] }[]>([]);
     const [input, setInput] = useState("");
@@ -62,7 +63,10 @@ export default function ChatInterface() {
             const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userMessage }),
+                body: JSON.stringify({
+                    message: userMessage,
+                    careEnvironment
+                }),
             });
             const data = await res.json();
             setMessages((prev) => {
@@ -281,63 +285,91 @@ export default function ChatInterface() {
                     mt: -3,
                     pl: 3,
                     pr: 3,
-                    pb: 1,
                     bgcolor: "transparent",
                     boxShadow: "none",
-                    zIndex: 999
+                    zIndex: 999,
+                    display: 'flex',
+                    alignItems: 'center'
                 }}>
-                    <Box sx={{
-                        display: "flex",
-                        alignItems: "flex-end",
-                        borderRadius: "12px",
-                        border: "1px solid #ccc",
-                        backgroundColor: "white",
-                        boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.16)',
-                        px: 2,
-                        py: 1.5,
-                        '& textarea': {
-                            fontFamily: "inherit",
-                            fontSize: "16px !important",
-                            lineHeight: '24px'
-                        }
-                    }}>
-                        <TextareaAutosize
-                            minRows={1}
-                            maxRows={6}
-                            placeholder="반드시 연령을 포함해 질문해 주세요. ex) 만 1세 여아, 고열 3일 지속, 발진 동반 "
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={(e: any) => {
-                                console.log('e.isComposing:', e.isComposing, 'e.nativeEvent.isComposing:', e.nativeEvent.isComposing);
-                                if (e.key === 'Enter' && !e.shiftKey) {
-                                    if (e.nativeEvent.isComposing) return;
-                                    e.preventDefault();
-                                    handleSend();
+                    {/* 진료 환경 선택 버튼 */}
+                    <Box sx={{ mr: 2 }}>
+                        {/* <Typography sx={{ fontSize: 14, fontWeight: 'bold', mr: 2 }}>
+                            진료 환경 선택
+                        </Typography> */}
+                        <ToggleButtonGroup
+                            value={careEnvironment}
+                            exclusive
+                            onChange={(event, newValue) => {
+                                if (newValue !== null) {
+                                    setCareEnvironment(newValue);
                                 }
                             }}
-
-                            style={{
-                                width: "100%",
+                            color="primary"
+                            size="small"
+                            sx={{
+                                backgroundColor: "white",
+                                boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.16)',
                                 minHeight: '48px',
-                                resize: "none",
-                                border: "none",
-                                outline: "none",
-                                backgroundColor: "transparent",
                             }}
-                        />
-                        <LoadingButton onClick={handleSend} sx={{ ml: 2 }} variant='contained' color='secondary' loading={loading}>
-                            등록
-                        </LoadingButton>
+                        >
+                            <ToggleButton value="first_visit" sx={{ fontSize: 14, fontWeight: 'bold', px: 2, minHeight: '74px' }}>첫 진료</ToggleButton>
+                            <ToggleButton value="inpatient_care" sx={{ fontSize: 14, fontWeight: 'bold', px: 2, minHeight: '74px' }}>입원 중</ToggleButton>
+                        </ToggleButtonGroup>
                     </Box>
-                    <Typo sx={{
-                        mt: 1,
-                        textAlign: 'center',
-                        fontSize: 12,
-                        color: '#ababab'
-                    }}>
-                        본 서비스는 증례 추천 외의 질문은 지원하지 않습니다.
-                    </Typo>
+                    <Box sx={{ flex: 1, }}>
+                        <Box sx={{
+                            display: "flex",
+                            alignItems: "flex-end",
+                            borderRadius: "8px",
+                            border: "1px solid rgba(0, 0, 0, 0.12)",
+                            backgroundColor: "white",
+                            boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.16)',
+                            px: 2,
+                            py: 1.5,
+                            '& textarea': {
+                                fontFamily: "inherit",
+                                fontSize: "16px !important",
+                                lineHeight: '24px'
+                            }
+                        }}>
+                            <TextareaAutosize
+                                minRows={1}
+                                maxRows={6}
+                                placeholder="반드시 연령을 포함해 질문해 주세요. ex) 만 1세 여아, 고열 3일 지속, 발진 동반 "
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={(e: any) => {
+                                    console.log('e.isComposing:', e.isComposing, 'e.nativeEvent.isComposing:', e.nativeEvent.isComposing);
+                                    if (e.key === 'Enter' && !e.shiftKey) {
+                                        if (e.nativeEvent.isComposing) return;
+                                        e.preventDefault();
+                                        handleSend();
+                                    }
+                                }}
+
+                                style={{
+                                    flex: 1,
+                                    minHeight: '48px',
+                                    resize: "none",
+                                    border: "none",
+                                    outline: "none",
+                                    backgroundColor: "transparent",
+                                }}
+                            />
+                            <LoadingButton onClick={handleSend} sx={{ ml: 2 }} variant='contained' color='secondary' loading={loading}>
+                                등록
+                            </LoadingButton>
+                        </Box>
+                    </Box>
                 </Box >
+                <Typo sx={{
+                    my: 1,
+                    textAlign: 'center',
+                    fontSize: 12,
+                    color: '#ababab'
+                }}>
+                    본 서비스는 증례 추천 외의 질문은 지원하지 않습니다.
+                </Typo>
             </Box>
             {/* 상세 다이얼로그 */}
             <Dialog
