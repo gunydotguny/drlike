@@ -50,6 +50,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 사용자 질문:
 ${message}
 
+- 사용자의 입력에서 연령 정보가 '세'로 주어질 경우, 반드시 '개월(months)' 단위로 변환해 판단해야 돼
+예: 3세 → 36개월
+
 추천된 증례 개수: ${recommendedCases.length}
 `;
 
