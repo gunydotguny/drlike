@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 아래 질문과 추천된 유사 증례를 참고해서,
 사용자에게 다음 내용으로 안내할 가이드 문구를 작성해줘:
-- 총 ${recommendedCases.length}건의 유사 증례가 추천되었음
+- ✅ 총 ${recommendedCases.length}건의 유사 증례가 추천되었음
 - 증례 요약들은 아래에 따로 제공될 예정이니, 증례 목록은 절대 반복하지 말고
 - 증례를 참고하여 적절한 의료 상담이나 추가 행동을 권장하는 식으로 자연스럽게 안내
 
@@ -44,6 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 - "총 N건의 유사 증례가 추천되었습니다. 아래 증례를 참고하세요." 정도의 매우 간단한 한 문장으로만 안내.
 - 절대 추가 설명, 증례 분석, 의학 정보, 조언 등을 포함하지 말 것.
 - 반드시 한 문장만 출력.
+- ✅ 이모지 꼭 포함
 
 
 사용자 질문:

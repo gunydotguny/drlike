@@ -1,16 +1,20 @@
-// ChatInterface.tsx
 import React, { useState, useRef, useEffect } from "react";
-import { Box, Typography, TextareaAutosize, Button, Stack, Dialog } from "@mui/material";
+import { Box, Typography, TextareaAutosize, Button, Stack, Dialog, IconButton } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Typo from "../components/atoms/Typo";
 import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
+import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-const ChatInterface = () => {
+export default function ChatInterface() {
     const [selectedDetail, setSelectedDetail] = useState<any | null>(null);
-    const [messages, setMessages] = useState<
-        { text: string; from: "user" | "bot"; cases?: any[] }[]
-    >([]);
+    const [messages, setMessages] = useState<{ text: string; from: "user" | "bot"; cases?: any[] }[]>([]);
     const [input, setInput] = useState("");
     const chatEndRef = useRef<HTMLDivElement | null>(null);
     const [loading, setLoading] = useState(false);
@@ -19,16 +23,31 @@ const ChatInterface = () => {
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-
+    useEffect(() => {
+        console.log("messages.length", messages.length, messages);
+    }, [])
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
 
+    const hasAge = (text: string) => {
+        const ageRegex = /(만\s*\d+\s*세|[0-9]+\s*개월|[0-9]+\s*세|나이\s*\d+|생후\s*\d+\s*개월|태어난지\s*\d+\s*(개월|달)|\d+\s*살|age\s*\d+|aged\s*\d+|[0-9]+\s*(months|month|years|year)\s*old)/i;
+        return ageRegex.test(text);
+    };
+
     const handleSend = async () => {
         if (!input.trim()) return;
-
         const userMessage = input;
         setInput("");
+
+        if (!hasAge(userMessage)) {
+            setMessages((prev) => [
+                ...prev,
+                { text: userMessage, from: "user" },
+                { text: "🛑 증례 추천에 실패했습니다. 반드시 연령 정보를 입력해 주세요.", from: "bot" },
+            ]);
+            return;
+        }
 
         if (isSending) return;
 
@@ -39,23 +58,20 @@ const ChatInterface = () => {
         ]);
         setIsSending(true);
         setLoading(true);
-
         try {
             const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: userMessage }),
             });
-
             const data = await res.json();
-
             setMessages((prev) => {
                 const newMessages = [...prev];
                 newMessages.pop();
                 return [...newMessages, {
                     text: data.guideMessage,
                     from: "bot",
-                    cases: data.cases
+                    cases: data.cases.length > 0 ? data.cases : undefined,
                 }];
             });
         } catch (error) {
@@ -87,126 +103,188 @@ const ChatInterface = () => {
                     boxShadow: `0 4px 12px 0 rgba(19, 20, 22, 0.08)`,
                     display: 'flex',
                     flexDirection: 'column',
+                    overflow: 'hidden'
                 }
             }}>
                 <Header />
-                <Box sx={{ flex: 1, overflowY: "auto", pt: 2, pb: 3 + 2 }}>
+                <Box sx={{ position: 'relative', flex: 1, overflowY: "auto", pt: 3, pb: 3 }}>
+                    {messages.length === 0 && (
+                        <Box sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            zIndex: 99
+                        }}>
+                            <Typo sx={{
+                                fontSize: '14px',
+                                lineHeight: '24px',
+                                color: '#898989',
+                                textAlign: 'center'
+                            }}>
+                                이 서비스는 소아 감염·호흡기·알레르기 질환에 대한 증례 추천을 위한 서비스입니다.<br />
+                                환자의 증상이나 상황을 입력해 유사 증례를 추천 받아 보세요.
+                            </Typo>
+                        </Box>
+                    )}
                     {messages.map((msg, index) => (
                         <Box key={index} sx={{
-                            display: "flex",
-                            flexDirection: 'column',
-                            alignItems: msg.from === "user" ? "flex-end" : "flex-start",
-                            mb: 3,
+                            mb: 5,
                         }}>
                             <Box sx={{
-                                px: 2,
-                                py: 1.5,
-                                borderRadius: 2,
-                                bgcolor: msg.from === "user" ? "grey.50" : "none",
-                                color: "text.primary",
-                                maxWidth: "100%",
-                                wordBreak: "break-word",
-                                whiteSpace: "pre-wrap",
-                                ml: 3,
-                                mr: 3,
+                                position: 'relative',
+                                width: '100%',
+                                display: "flex",
+                                flexDirection: 'column',
+                                alignItems: msg.from === "user" ? "flex-end" : "flex-start",
                             }}>
-                                <Typography sx={{ fontSize: "16px", lineHeight: "24px" }}>
-                                    {msg.text}
-                                </Typography>
-                            </Box>
-
-                            {/* 증례 카드 섹션 */}
-                            {msg.from === "bot" && msg.cases && msg.cases?.length > 0 && (
                                 <Box sx={{
-                                    mt: 2,
-                                    display: "flex",
-                                    overflowX: "auto",
-                                    scrollSnapType: "x mandatory",
-                                    gap: 3,
-                                    '&::-webkit-scrollbar': { display: 'none' },
-                                    pb: 2,
-                                    width: '100%',
+                                    position: 'relative',
+                                    px: msg.from === "user" ? 2 : 0,
+                                    py: msg.from === "user" ? 1.5 : 0,
+                                    borderRadius: 2,
+                                    bgcolor: msg.from === "user" ? "grey.50" : "none",
+                                    color: "text.primary",
+                                    maxWidth: "100%",
+                                    wordBreak: "break-word",
+                                    whiteSpace: "pre-wrap",
+                                    ml: 3,
+                                    mr: 3,
                                 }}>
-                                    <Box sx={{ flex: "0 0 auto", width: '0px', scrollSnapAlign: "start" }} />
-                                    {msg.cases.map((caseItem, idx) => (
-                                        <Box
-                                            key={idx}
-                                            onClick={() => setSelectedDetail(caseItem)}
-                                            sx={{
-                                                flex: "0 0 auto",
-                                                scrollSnapAlign: "start",
-                                                width: "320px",
-                                                maxHeight: "480px",
-                                                borderRadius: '4px',
-                                                border: `1px solid #DCDFE5`,
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                cursor: 'pointer',
-                                                boxShadow: `0 2px 8px rgba(19, 20, 22, 0.1)`,
-                                                bgcolor: 'white',
-                                                transition: 'box-shadow 0.3s ease',
-                                                '&:hover': {
-                                                    boxShadow: `4px 4px 16px rgba(19, 20, 22, 0.16)`,
-                                                },
-                                            }}
-                                        >
-                                            <Box sx={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                p: `12px 16px`,
-                                                borderBottom: `1px solid #DCDFE5`,
-                                            }}>
-                                                <Typo sx={{ fontSize: 16, fontWeight: '700', flex: 1 }}>
-                                                    증례 ID : {caseItem.case_id ?? "-"}
-                                                </Typo>
-                                            </Box>
-                                            <Stack spacing={2} sx={{ p: `12px 16px`, flex: 1 }}>
-                                                <Stack spacing={1} sx={{
-                                                    ' span': {
-                                                        display: 'inline-block',
-                                                        minWidth: '48px !important',
-                                                        color: '#515867'
-                                                    },
-                                                }}>
-                                                    <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
-                                                        <span>진단명</span> {caseItem.metadata?.diagnosis_diagnosis ?? "-"}
-                                                    </Typo>
-                                                    <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
-                                                        <span>나이</span> {caseItem.metadata?.patient_info_age_months ?? "-"}개월
-                                                    </Typo>
-                                                    <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
-                                                        <span>성별</span> {caseItem.metadata?.patient_info_sex ?? "-"}
-                                                    </Typo>
-                                                </Stack>
-                                                <Box sx={{
-                                                    borderRadius: '4px',
-                                                    p: `12px 16px`,
-                                                    backgroundColor: '#F5F6F7',
-                                                    flex: 1,
-                                                }}>
-                                                    <Typo lines={8} sx={{ fontSize: 14, color: '#515867' }}>
-                                                        {caseItem.summary}
-                                                    </Typo>
+                                    <Typography sx={{ fontSize: "16px", lineHeight: "24px" }}>
+                                        {msg.text}
+                                    </Typography>
+                                </Box>
+                                {msg.from === "bot" && msg.cases && msg.cases.length > 0 && (
+                                    <Box sx={{
+                                        position: 'absolute',
+                                        right: 24,
+                                        bottom: 0,
+                                        display: 'flex', justifyContent: 'flex-end', gap: 1
+                                    }}>
+                                        <IconButton className={`swiper-button-prev-${index}`} sx={{
+                                            bgcolor: "white", boxShadow: 1, borderRadius: 1, width: `32px`, height: `32px`, '&.swiper-button-disabled': {
+                                                opacity: 0.3,
+                                                pointerEvents: 'none',
+                                            },
+                                        }}>
+                                            <ArrowForwardIosIcon sx={{ transform: 'rotate(180deg)' }} />
+                                        </IconButton>
+                                        <IconButton className={`swiper-button-next-${index}`} sx={{
+                                            bgcolor: "white", boxShadow: 1, borderRadius: 1, width: `32px`, height: `32px`, '&.swiper-button-disabled': {
+                                                opacity: 0.3,
+                                                pointerEvents: 'none',
+                                            },
+                                        }}>
+                                            <ArrowForwardIosIcon />
+                                        </IconButton>
+                                    </Box>
+                                )}
+                            </Box>
+                            {msg.from === "bot" && msg.cases && msg.cases.length > 0 && (
+                                <Box sx={{
+                                    mt: 3,
+                                    px: 3,
+                                    pb: 3,
+                                    overflow: 'hidden',
+                                    width: '100%',
+                                    maxWidth: '100%'
+                                }}>
+                                    <Swiper
+                                        modules={[Navigation]}
+                                        navigation={{
+                                            prevEl: `.swiper-button-prev-${index}`,
+                                            nextEl: `.swiper-button-next-${index}`,
+                                        }}
+                                        slidesPerView={3}
+                                        spaceBetween={16}
+                                        style={{
+                                            padding: '24px 0',
+                                            margin: '-24px 0',
+                                            overflow: 'visible'
+                                        }}
+                                    >
+                                        {msg.cases.map((caseItem, idx) => (
+                                            <SwiperSlide key={idx}>
+                                                <Box
+                                                    sx={{
+                                                        width: '100%',
+                                                        maxHeight: "480px",
+                                                        borderRadius: '4px',
+                                                        border: `1px solid #DCDFE5`,
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        boxShadow: `0 2px 8px rgba(19, 20, 22, 0.1)`,
+                                                        bgcolor: 'white',
+                                                    }}
+                                                >
+                                                    <Box sx={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        p: `12px 16px`,
+                                                        borderBottom: `1px solid #DCDFE5`,
+                                                    }}>
+                                                        <Typo sx={{ fontSize: 16, fontWeight: '700', flex: 1 }}>
+                                                            증례 ID : {caseItem.case_id ?? "-"}
+                                                        </Typo>
+                                                        <OpenInFullIcon onClick={() => setSelectedDetail(caseItem)} sx={{ cursor: 'pointer' }} />
+                                                    </Box>
+                                                    <Stack spacing={2} sx={{ p: `12px 16px`, flex: 1 }}>
+                                                        <Stack spacing={1} sx={{
+                                                            ' span': {
+                                                                display: 'inline-block',
+                                                                minWidth: '48px !important',
+                                                                color: '#515867'
+                                                            },
+                                                        }}>
+                                                            <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                                                <span>진단명</span> {caseItem.metadata?.diagnosis_diagnosis ?? "-"}
+                                                            </Typo>
+                                                            <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                                                <span>나이</span> {caseItem.metadata?.patient_info_age_months ?? "-"}개월
+                                                            </Typo>
+                                                            <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                                                <span>성별</span> {caseItem.metadata?.patient_info_sex ?? "-"}
+                                                            </Typo>
+                                                        </Stack>
+                                                        <Box sx={{
+                                                            borderRadius: '4px',
+                                                            p: `12px 16px`,
+                                                            backgroundColor: '#F5F6F7',
+                                                            flex: 1,
+                                                        }}>
+                                                            <Typo lines={8} sx={{ fontSize: 14, color: '#515867' }}>
+                                                                {caseItem.summary}
+                                                            </Typo>
+                                                        </Box>
+                                                    </Stack>
                                                 </Box>
-                                            </Stack>
-                                        </Box>
-                                    ))}
-                                    <Box sx={{ width: '24px' }} />
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
                                 </Box>
                             )}
+
+
                         </Box>
                     ))}
                     <div ref={chatEndRef} />
+                    <Box sx={{ height: `108px` }} />
                 </Box>
-
                 {/* 입력 영역 */}
                 <Box sx={{
                     mt: -3,
                     pl: 3,
                     pr: 3,
-                    pb: 3,
+                    pb: 1,
                     bgcolor: "transparent",
                     boxShadow: "none",
+                    zIndex: 999
                 }}>
                     <Box sx={{
                         display: "flex",
@@ -214,7 +292,7 @@ const ChatInterface = () => {
                         borderRadius: "12px",
                         border: "1px solid #ccc",
                         backgroundColor: "white",
-                        boxShadow: `0px 4px 4px 0px rgba(0, 0, 0, 0.16)`,
+                        boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.16)',
                         px: 2,
                         py: 1.5,
                         '& textarea': {
@@ -226,16 +304,18 @@ const ChatInterface = () => {
                         <TextareaAutosize
                             minRows={1}
                             maxRows={6}
-                            placeholder="메시지를 입력하세요..."
+                            placeholder="반드시 연령을 포함해 질문해 주세요. ex) 만 1세 여아, 고열 3일 지속, 발진 동반 "
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e: any) => {
-                                if (e.key === "Enter" && !e.shiftKey) {
-                                    if (e.isComposing) return;
+                                console.log('e.isComposing:', e.isComposing, 'e.nativeEvent.isComposing:', e.nativeEvent.isComposing);
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    if (e.nativeEvent.isComposing) return;
                                     e.preventDefault();
                                     handleSend();
                                 }
                             }}
+
                             style={{
                                 width: "100%",
                                 minHeight: '48px',
@@ -249,16 +329,98 @@ const ChatInterface = () => {
                             등록
                         </LoadingButton>
                     </Box>
-                </Box>
+                    <Typo sx={{
+                        mt: 1,
+                        textAlign: 'center',
+                        fontSize: 12,
+                        color: '#ababab'
+                    }}>
+                        본 서비스는 증례 추천 외의 질문은 지원하지 않습니다.
+                    </Typo>
+                </Box >
             </Box>
-
             {/* 상세 다이얼로그 */}
-            <Dialog open={!!selectedDetail} onClose={() => setSelectedDetail(null)} maxWidth="md" fullWidth>
-                {/* ... 여기에 다이얼로그 내용 추가 (너가 기존에 쓰던 거 그대로 넣으면 됨) */}
-            </Dialog>
+            <Dialog
+                open={!!selectedDetail
+                }
+                onClose={() => setSelectedDetail(null)}
+                maxWidth="md"
+                fullWidth
+                sx={{ ' .MuiPaper-root': { borderRadius: 1 } }}
+            >
+                <Box sx={{
+                    width: '100%',
+                    display: 'flex',
+                    p: '20px 24px',
+                    alignItems: 'center',
+                    borderBottom: '1px solid #DCDFE5',
+                }}>
+                    <Typo sx={{ fontSize: 20, fontWeight: '700', flex: 1 }}>
+                        증례 ID : {selectedDetail?.case_id ?? "-"}
+                    </Typo>
+                    <CloseIcon onClick={() => setSelectedDetail(null)} sx={{ fontSize: 20, cursor: 'pointer' }} />
+                </Box>
+                <Box sx={{ flex: 1, overflowY: 'auto' }}>
+                    <Box sx={{ width: '100%', p: 3, mb: -3, }}>
+                        <Typo sx={{ fontSize: 16, fontWeight: '700', mb: 2 }}>
+                            요약
+                        </Typo>
+                        <Box sx={{
+                            display: 'flex',
+                        }}>
+                            <Stack spacing={1} sx={{
+                                flex: 1,
+                                ' span': {
+                                    display: 'inline-block',
+                                    minWidth: '48px !important',
+                                    color: '#515867'
+                                },
+                            }}>
+                                <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                    <span>진단명</span> {selectedDetail?.metadata?.diagnosis_diagnosis ?? "-"}
+                                </Typo>
+                                <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                    <span>나이</span> {selectedDetail?.metadata?.patient_info_age_months ?? "-"}개월
+                                </Typo>
+                                <Typo sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                    <span>성별</span> {selectedDetail?.metadata?.patient_info_sex ?? "-"}
+                                </Typo>
+                            </Stack>
+                            <Box sx={{
+                                borderRadius: '4px',
+                                p: '12px 16px',
+                                backgroundColor: '#F5F6F7',
+                                flex: 2,
+                            }}>
+                                <Typo lines={100} sx={{ fontSize: 14, color: '#515867' }}>
+                                    {selectedDetail?.summary ?? "-"}
+                                </Typo>
+                            </Box>
+                        </Box>
+                    </Box>
+                    <Box sx={{ width: '100%', p: 3 }}>
+                        <Typo sx={{ fontSize: 16, fontWeight: '700', mb: 2 }}>
+                            상세 정보
+                        </Typo>
+                        <Stack spacing={1} sx={{
+                            ' span': {
+                                display: 'block',
+                                minWidth: '48px !important',
+                                color: '#515867'
+                            },
+                        }}>
+                            {selectedDetail && Object.entries(selectedDetail.metadata || {}).map(([key, value]) => (
+                                <Typo key={key} sx={{ fontSize: 14, color: '#8D95A5' }}>
+                                    <span>{key}</span>{String(value)}
+                                </Typo>
+                            ))}
+                        </Stack>
+                    </Box>
+                </Box>
+            </Dialog >
         </>
     );
-};
+}
 
 function Header() {
     const router = useRouter();
@@ -266,19 +428,19 @@ function Header() {
         <Box sx={{
             display: 'flex',
             alignItems: 'center',
-            p: `24px`,
-            borderBottom: `1px solid #DCDFE5`,
+            p: '24px',
+            borderBottom: '1px solid #DCDFE5',
         }}>
             <Box sx={{
-                ' img': { width: `48px !important`, height: `48px !important`, mr: `24px` }
+                ' img': { width: '48px !important', height: '48px !important', mr: '24px' }
             }}>
                 <img src='/logo/caseRecommend.png' />
             </Box>
             <Box sx={{ flex: 1 }}>
-                <Typo sx={{ fontSize: `22px`, fontWeight: `700` }}>
+                <Typo sx={{ fontSize: '22px', fontWeight: 700 }}>
                     증례추천
                 </Typo>
-                <Typo sx={{ fontSize: `15px` }}>
+                <Typo sx={{ fontSize: '15px' }}>
                     소아 감염, 호흡기, 알레르기 진단을 간편하게
                 </Typo>
             </Box>
@@ -288,5 +450,3 @@ function Header() {
         </Box>
     );
 }
-
-export default ChatInterface;

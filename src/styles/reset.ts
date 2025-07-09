@@ -55,14 +55,12 @@ body {
 }
 
 * {
-  // letter-spacing: -0.4px !important;
-  letter-spacing: -0.2px !important;
-  // font-family: 'LINESeedKR' !important
-  font-family: Pretendard !important
+  letter-spacing: -0.4px !important;
+  font-family: Pretendard, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif !important;
 }
 
 body,code,html,kbd,pre,samp {
-  font-family: Pretendard, Noto Sans KR,-apple-system,BlinkMacSystemFont,Roboto,Yu Gothic,Helvetica Neue,sans-serif
+  font-family: Pretendard, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif !important;
 }
 
 html:lang(en),html:lang(en) body,html:lang(en) code,html:lang(en) kbd,html:lang(en) pre,html:lang(en) samp {

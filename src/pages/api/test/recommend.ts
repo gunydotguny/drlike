@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const queryData = await queryRes.json();
         const retrievedCases = (queryData.metadatas?.[0] || []).map((metadata: any, idx: number) => ({
-            id: queryData.ids?.[0]?.[idx] || metadata.case_id,  // 안정적
+            case_id: queryData.ids?.[0]?.[idx] || metadata.case_id,  // 반드시 case_id 사용
             document: queryData.documents?.[0]?.[idx] || "",
             metadata,
             distance: queryData.distances?.[0]?.[idx] || null,
