@@ -147,7 +147,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             score: computeCaseScore(formData, caseItem.metadata, weights)
         }));
 
-        const topCases = scoredCases.sort((a: RetrievedCase & { score: number }, b: RetrievedCase & { score: number }) => b.score - a.score)
+        const topCases = scoredCases.sort((a: RetrievedCase & { score: number }, b: RetrievedCase & { score: number }) => b.score - a.score).slice(0, 5);
 
         return res.status(200).json({
             recommendationList: topCases,
