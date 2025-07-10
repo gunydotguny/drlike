@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ToggleButton, ToggleButtonGroup, Box, Typography, TextareaAutosize, Button, Stack, Dialog, IconButton } from "@mui/material";
+import { Box, Typography, TextareaAutosize, Button, Stack, Dialog, IconButton } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Typo from "../components/atoms/Typo";
 import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -13,13 +12,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function ChatInterface() {
-    const [careEnvironment, setCareEnvironment] = useState("first_visit");
     const [selectedDetail, setSelectedDetail] = useState<any | null>(null);
     const [messages, setMessages] = useState<{ text: string; from: "user" | "bot"; cases?: any[] }[]>([]);
     const [input, setInput] = useState("");
     const chatEndRef = useRef<HTMLDivElement | null>(null);
     const [loading, setLoading] = useState(false);
-    const [isSending, setIsSending] = useState(false);
 
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -31,10 +28,8 @@ export default function ChatInterface() {
         scrollToBottom();
     }, [messages]);
 
-    const hasAge = (text: string) => {
-        const ageRegex = /(만\s*\d+\s*세|[0-9]+\s*개월|[0-9]+\s*세|나이\s*\d+|생후\s*\d+\s*개월|태어난지\s*\d+\s*(개월|달)|\d+\s*살|age\s*\d+|aged\s*\d+|[0-9]+\s*(months|month|years|year)\s*old)/i;
-        return ageRegex.test(text);
-    };
+    const [awaitingAdditionalAnswer, setAwaitingAdditionalAnswer] = useState(false);
+
     const handleSend = async () => {
         if (!input.trim()) return;
         const userMessage = input;
@@ -43,13 +38,26 @@ export default function ChatInterface() {
         setMessages((prev) => [...prev, { text: userMessage, from: "user" }]);
 
         try {
-            // ✅ Intent API 호출 전 로딩 메시지 추가
+            // ✅ 추가 질문 응답 처리 흐름
+            if (awaitingAdditionalAnswer) {
+                const res = await fetch("/api/chat/validateAdditional", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ additionalAnswer: userMessage }),
+                });
+                const { status, info } = await res.json();
+
+                // ✅ 추천 API 호출 (추가 정보 포함/미포함)
+                await callRecommendationAPI(info);
+                setAwaitingAdditionalAnswer(false);
+                return;
+            }
+
             setMessages((prev) => [
                 ...prev,
                 { text: "답변을 생성 중입니다...", from: "bot", loading: true },
             ]);
 
-            // ✅ 지금까지의 모든 대화 문맥을 Intent API에 전달
             const combinedInput = messages
                 .map((msg) => `${msg.from === "user" ? "사용자" : "봇"}: ${msg.text}`)
                 .join("\n") + `\n사용자: ${userMessage}`;
@@ -62,18 +70,13 @@ export default function ChatInterface() {
 
             if (!intentRes.ok) throw new Error("Intent API 호출 실패");
 
-            const { visitStatus, ageValue, ageUnit, nextQuestion } = await intentRes.json();
+            const { visitStatus, ageValue, ageUnit, nextQuestion, additionalQuestion } = await intentRes.json();
 
-            // ✅ Intent API 응답 받았으면 로딩 메시지 제거
             setMessages((prev) => {
                 const newMessages = [...prev];
                 newMessages.pop();
                 return newMessages;
             });
-
-            if (visitStatus !== "UNKNOWN") {
-                setCareEnvironment(visitStatus === "FIRST_VISIT" ? "first_visit" : "inpatient_care");
-            }
 
             let ageInMonths = null;
             if (ageValue !== null && ageUnit) {
@@ -85,34 +88,14 @@ export default function ChatInterface() {
                 return;
             }
 
-            // ✅ 모든 정보 있으면 추천 API 호출
-            setLoading(true);
-            setMessages((prev) => [
-                ...prev,
-                { text: "추천 증례를 찾고 있습니다...", from: "bot", loading: true },
-            ]);
+            if (additionalQuestion) {
+                setMessages((prev) => [...prev, { text: additionalQuestion, from: "bot" }]);
+                setAwaitingAdditionalAnswer(true);
+                return;
+            }
 
-            const res = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    message: userMessage,
-                    careEnvironment: visitStatus === "FIRST_VISIT" ? "first_visit" : "inpatient_care",
-                    ageMonths: ageInMonths,
-                }),
-            });
-
-            const data = await res.json();
-
-            setMessages((prev) => {
-                const newMessages = [...prev];
-                newMessages.pop();
-                return [...newMessages, {
-                    text: data.guideMessage,
-                    from: "bot",
-                    cases: data.cases.length > 0 ? data.cases : undefined,
-                }];
-            });
+            // ✅ 추천 API 호출 (추가 정보 없음)
+            await callRecommendationAPI(null, userMessage, ageInMonths, visitStatus);
 
         } catch (error) {
             console.error(error);
@@ -125,7 +108,36 @@ export default function ChatInterface() {
         }
     };
 
+    const callRecommendationAPI = async (additionalInfo: string | null, message?: string, ageMonths?: number, visitStatus?: string) => {
+        setLoading(true);
+        setMessages((prev) => [
+            ...prev,
+            { text: "추천 증례를 찾고 있습니다...", from: "bot", loading: true },
+        ]);
 
+        const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                message,
+                careEnvironment: visitStatus === "FIRST_VISIT" ? "first_visit" : "inpatient_care",
+                ageMonths,
+                additionalInfo,
+            }),
+        });
+
+        const data = await res.json();
+
+        setMessages((prev) => {
+            const newMessages = [...prev];
+            newMessages.pop();
+            return [...newMessages, {
+                text: data.guideMessage,
+                from: "bot",
+                cases: data.cases.length > 0 ? data.cases : undefined,
+            }];
+        });
+    };
 
     return (
         <>
@@ -175,7 +187,7 @@ export default function ChatInterface() {
                                 textAlign: 'center'
                             }}>
                                 이 서비스는 소아 감염·호흡기·알레르기 질환에 대한 증례 추천을 위한 서비스입니다.<br />
-                                환자의 증상이나 상황을 입력해 유사 증례를 추천 받아 보세요.
+                                환자의 진료 환경이나 연령, 증상 등을 입력해 유사 증례를 추천 받아 보세요.
                             </Typo>
                         </Box>
                     )}
@@ -372,7 +384,7 @@ export default function ChatInterface() {
                                 <TextareaAutosize
                                     minRows={1}
                                     maxRows={6}
-                                    placeholder="반드시 연령을 포함해 질문해 주세요. ex) 만 1세 여아, 고열 3일 지속, 발진 동반 "
+                                    placeholder="메시지를 입력해 주세요."
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyDown={(e: any) => {

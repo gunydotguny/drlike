@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 const API_KEY = process.env.UPSTAGE_API_KEY!;
 const BASE_URL = "https://api.upstage.ai/v1";
 
-// ✅ 마크다운 코드 블록 제거 함수 (반드시 포함)
 function stripMarkdownFence(text: string): string {
     return text.replace(/^```json\s*/i, "")
         .replace(/```$/, "")
@@ -41,12 +40,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 - 질문 문구는 부드럽고 친절하게 작성하고, 가능한 다양한 표현을 사용해 반복 사용 시 자연스럽게 느껴지도록 해줘
 - 모든 정보가 충분하면 null을 반환해
 
+추가 지시:
+모든 필수 정보(진료 상태와 연령)가 충분히 확보된 경우에도,  
+마지막으로 반드시 아래 항목에 대해 추가 질문 문구를 생성해줘:
+- 환아의 진단명
+- 주요 증상
+- 검사 결과
+
+질문 문구는 부드럽고 친절하게 작성하고, 가능한 다양한 표현을 사용해 자연스럽게 느껴지도록 해줘.  
+이 질문은 반드시 모든 필수 정보가 확보된 경우에만 포함해야 하며,  
+사용자가 답변하지 않으면 "없음"으로 넘어갈 수 있도록 안내해줘.
+
 응답은 반드시 아래 JSON 형식으로 정확하게 제공해야 하며, 절대로 다른 설명을 추가하면 안 돼:
 {
   "visitStatus": "",
   "ageValue": 숫자 or null,
   "ageUnit": "month" or "year" or null,
-  "nextQuestion": 질문 문구 or null
+  "nextQuestion": 질문 문구 or null,
+  "additionalQuestion": 추가 질문 문구 or null
 }
 
 사용자 입력:
