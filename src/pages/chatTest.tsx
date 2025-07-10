@@ -35,40 +35,57 @@ export default function ChatInterface() {
         const ageRegex = /(만\s*\d+\s*세|[0-9]+\s*개월|[0-9]+\s*세|나이\s*\d+|생후\s*\d+\s*개월|태어난지\s*\d+\s*(개월|달)|\d+\s*살|age\s*\d+|aged\s*\d+|[0-9]+\s*(months|month|years|year)\s*old)/i;
         return ageRegex.test(text);
     };
-
     const handleSend = async () => {
         if (!input.trim()) return;
         const userMessage = input;
         setInput("");
 
-        if (!hasAge(userMessage)) {
+        setMessages((prev) => [...prev, { text: userMessage, from: "user" }]);
+
+        try {
+            const intentRes = await fetch("/api/chat/intent", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userInput: userMessage }),
+            });
+
+            if (!intentRes.ok) throw new Error("Intent API 호출 실패");
+
+            const { visitStatus, ageValue, ageUnit, nextQuestion } = await intentRes.json();
+
+            if (visitStatus !== "UNKNOWN") {
+                setCareEnvironment(visitStatus === "FIRST_VISIT" ? "first_visit" : "inpatient_care");
+            }
+
+            let ageInMonths = null;
+            if (ageValue !== null && ageUnit) {
+                ageInMonths = ageUnit === "year" ? ageValue * 12 : ageValue;
+            }
+
+            if (nextQuestion) {
+                setMessages((prev) => [...prev, { text: nextQuestion, from: "bot" }]);
+                return;
+            }
+
+            // 모든 정보가 있으면 추천 API 호출
+            setLoading(true);
             setMessages((prev) => [
                 ...prev,
-                { text: userMessage, from: "user" },
-                { text: "🛑 증례 추천에 실패했습니다. 반드시 연령 정보를 입력해 주세요.", from: "bot" },
+                { text: "추천 증례를 찾고 있습니다...", from: "bot", loading: true },
             ]);
-            return;
-        }
 
-        if (isSending) return;
-
-        setMessages((prev) => [
-            ...prev,
-            { text: userMessage, from: "user" },
-            { text: "답변 생성 중...", from: "bot", loading: true },
-        ]);
-        setIsSending(true);
-        setLoading(true);
-        try {
             const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     message: userMessage,
-                    careEnvironment
+                    careEnvironment: visitStatus === "FIRST_VISIT" ? "first_visit" : "inpatient_care",
+                    ageMonths: ageInMonths,
                 }),
             });
+
             const data = await res.json();
+
             setMessages((prev) => {
                 const newMessages = [...prev];
                 newMessages.pop();
@@ -78,17 +95,18 @@ export default function ChatInterface() {
                     cases: data.cases.length > 0 ? data.cases : undefined,
                 }];
             });
+
         } catch (error) {
-            setMessages((prev) => {
-                const newMessages = [...prev];
-                newMessages.pop();
-                return [...newMessages, { text: "❗️ 오류가 발생했습니다.", from: "bot" }];
-            });
+            console.error(error);
+            setMessages((prev) => [
+                ...prev,
+                { text: "❗️ 시스템 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.", from: "bot" },
+            ]);
         } finally {
             setLoading(false);
-            setIsSending(false);
         }
     };
+
 
     return (
         <>
@@ -108,13 +126,19 @@ export default function ChatInterface() {
                     display: 'flex',
                     flexDirection: 'column',
                     overflow: 'hidden'
-                }
+                },
             }}>
                 <Header />
-                <Box sx={{ position: 'relative', flex: 1, overflowY: "auto", pt: 3, pb: 3 }}>
+                <Box sx={{
+                    position: 'relative', flex: 1, overflowY: "auto", pt: 3, pb: 3,
+                    "@media screen and (max-width: 600px)": {
+                        minHeight: '100vh',
+                        pt: '132px'
+                    }
+                }}>
                     {messages.length === 0 && (
                         <Box sx={{
-                            position: 'absolute',
+                            position: 'fixed',
                             top: 0,
                             left: 0,
                             right: 0,
@@ -160,7 +184,13 @@ export default function ChatInterface() {
                                     ml: 3,
                                     mr: 3,
                                 }}>
-                                    <Typography sx={{ fontSize: "16px", lineHeight: "24px" }}>
+                                    <Typography sx={{
+                                        fontSize: "16px", lineHeight: "24px",
+                                        "@media screen and (max-width: 600px)": {
+                                            maxWidth: msg.from === "bot" && msg.cases && msg.cases.length > 0 ? 'calc(100% - 48px)' : 'initial'
+                                        }
+
+                                    }}>
                                         {msg.text}
                                     </Typography>
                                 </Box>
@@ -197,7 +227,7 @@ export default function ChatInterface() {
                                     pb: 3,
                                     overflow: 'hidden',
                                     width: '100%',
-                                    maxWidth: '100%'
+                                    maxWidth: '100%',
                                 }}>
                                     <Swiper
                                         modules={[Navigation]}
@@ -205,7 +235,10 @@ export default function ChatInterface() {
                                             prevEl: `.swiper-button-prev-${index}`,
                                             nextEl: `.swiper-button-next-${index}`,
                                         }}
-                                        slidesPerView={3}
+                                        breakpoints={{
+                                            0: { slidesPerView: 1 },
+                                            600: { slidesPerView: 3 },
+                                        }}
                                         spaceBetween={16}
                                         style={{
                                             padding: '24px 0',
@@ -287,37 +320,20 @@ export default function ChatInterface() {
                     pr: 3,
                     boxShadow: "none",
                     zIndex: 999,
-                    background: "linear-gradient(to bottom, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 1) 92px)"
+                    background: "linear-gradient(to bottom, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 1) 92px)",
+                    "@media screen and (max-width: 600px)": {
+                        position: 'fixed',
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        zIndex: 9999,
+                    }
                 }}>
                     <Box sx={{
                         display: 'flex',
                         alignItems: 'center',
                     }}>
                         {/* 진료 환경 선택 버튼 */}
-                        <Box sx={{ mr: 2 }}>
-                            {/* <Typography sx={{ fontSize: 14, fontWeight: 'bold', mr: 2 }}>
-                            진료 환경 선택
-                        </Typography> */}
-                            <ToggleButtonGroup
-                                value={careEnvironment}
-                                exclusive
-                                onChange={(event, newValue) => {
-                                    if (newValue !== null) {
-                                        setCareEnvironment(newValue);
-                                    }
-                                }}
-                                color="primary"
-                                size="small"
-                                sx={{
-                                    backgroundColor: "white",
-                                    boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.16)',
-                                    minHeight: '48px',
-                                }}
-                            >
-                                <ToggleButton value="first_visit" sx={{ fontSize: 14, fontWeight: 'bold', px: 2, minHeight: '74px' }}>첫 진료</ToggleButton>
-                                <ToggleButton value="inpatient_care" sx={{ fontSize: 14, fontWeight: 'bold', px: 2, minHeight: '74px' }}>입원 중</ToggleButton>
-                            </ToggleButtonGroup>
-                        </Box>
                         <Box sx={{ flex: 1, }}>
                             <Box sx={{
                                 display: "flex",
@@ -465,6 +481,15 @@ function Header() {
             alignItems: 'center',
             p: '24px',
             borderBottom: '1px solid #DCDFE5',
+            "@media screen and (max-width: 600px)": {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 9999,
+                background: 'white',
+                p: '16px 24px',
+            }
         }}>
             <Box sx={{
                 ' img': { width: '48px !important', height: '48px !important', mr: '24px' }

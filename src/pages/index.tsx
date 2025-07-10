@@ -141,6 +141,7 @@ export default function App() {
               left: 0,
               right: 0,
               bottom: 0,
+              pt: '140px'
             }
           }}>
             <CircularProgress />
@@ -157,6 +158,9 @@ export default function App() {
                 display: 'flex',
                 overflow: 'hidden'
               },
+              "@media screen and (max-width: 600px)": {
+                pt: '140px'
+              }
             }}>
               <PatientSummary
                 formData={formData}
@@ -246,7 +250,10 @@ export default function App() {
             </Box> :
             <Box sx={{
               flex: 1,
-              overflowY: 'auto'
+              overflowY: 'auto',
+              "@media screen and (max-width: 600px)": {
+                pt: '112px'
+              }
             }}>
               <Box sx={{
                 p: `24px`,
@@ -321,6 +328,15 @@ function Header() {
     alignItems: 'center',
     p: `24px`,
     borderBottom: `1px solid #DCDFE5`,
+    "@media screen and (max-width: 600px)": {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 9999,
+      background: 'white',
+      p: '16px 24px',
+    }
   }}>
     <Box sx={{
       ' img': {
@@ -344,7 +360,7 @@ function Header() {
         소아 감염, 호흡기, 알레르기 진단을  간편하게
       </Typo>
     </Box>
-    <Button onClick={() => {router.push('/chatTest')}}>
+    <Button onClick={() => { router.push('/chatTest') }}>
       채팅 테스트
     </Button>
   </Box>
