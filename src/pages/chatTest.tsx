@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function ChatInterface() {
+    const [isBotResponding, setIsBotResponding] = useState(false);
     const [selectedDetail, setSelectedDetail] = useState<any | null>(null);
     const [messages, setMessages] = useState<{ text: string; from: "user" | "bot"; cases?: any[] }[]>([]);
     const [input, setInput] = useState("");
@@ -138,7 +139,7 @@ export default function ChatInterface() {
             }];
         });
     };
-
+    
     return (
         <>
             <Box sx={{
@@ -405,7 +406,9 @@ export default function ChatInterface() {
                                         backgroundColor: "transparent",
                                     }}
                                 />
-                                <LoadingButton onClick={handleSend} sx={{ ml: 2 }} variant='contained' color='secondary' loading={loading}>
+                                <LoadingButton onClick={handleSend} sx={{ ml: 2 }} variant='contained' color='secondary'
+                                    loading={loading || isBotResponding}
+                                >
                                     등록
                                 </LoadingButton>
                             </Box>
