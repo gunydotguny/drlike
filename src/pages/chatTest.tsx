@@ -43,15 +43,33 @@ export default function ChatInterface() {
         setMessages((prev) => [...prev, { text: userMessage, from: "user" }]);
 
         try {
+            // ✅ Intent API 호출 전 로딩 메시지 추가
+            setMessages((prev) => [
+                ...prev,
+                { text: "답변을 생성 중입니다...", from: "bot", loading: true },
+            ]);
+
+            // ✅ 지금까지의 모든 대화 문맥을 Intent API에 전달
+            const combinedInput = messages
+                .map((msg) => `${msg.from === "user" ? "사용자" : "봇"}: ${msg.text}`)
+                .join("\n") + `\n사용자: ${userMessage}`;
+
             const intentRes = await fetch("/api/chat/intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ userInput: userMessage }),
+                body: JSON.stringify({ userInput: combinedInput }),
             });
 
             if (!intentRes.ok) throw new Error("Intent API 호출 실패");
 
             const { visitStatus, ageValue, ageUnit, nextQuestion } = await intentRes.json();
+
+            // ✅ Intent API 응답 받았으면 로딩 메시지 제거
+            setMessages((prev) => {
+                const newMessages = [...prev];
+                newMessages.pop();
+                return newMessages;
+            });
 
             if (visitStatus !== "UNKNOWN") {
                 setCareEnvironment(visitStatus === "FIRST_VISIT" ? "first_visit" : "inpatient_care");
@@ -67,7 +85,7 @@ export default function ChatInterface() {
                 return;
             }
 
-            // 모든 정보가 있으면 추천 API 호출
+            // ✅ 모든 정보 있으면 추천 API 호출
             setLoading(true);
             setMessages((prev) => [
                 ...prev,
@@ -106,6 +124,7 @@ export default function ChatInterface() {
             setLoading(false);
         }
     };
+
 
 
     return (
