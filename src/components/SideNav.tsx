@@ -1,6 +1,6 @@
 import { alpha, Box, ButtonBase, Stack, Typography } from "@mui/material"
 import GridViewIcon from '@mui/icons-material/GridView';
-import ArticleIcon from '@mui/icons-material/Article';
+import SplitscreenIcon from '@mui/icons-material/Splitscreen';
 import { useRouter } from "next/router";
 import { purple, blueGrey } from "@mui/material/colors";
 
@@ -30,6 +30,7 @@ export default function SideNav() {
             bottom: 0,
             width: '100%',
             p: 0,
+                            borderTop: `1px solid ${blueGrey[100]}`
         }
     }}>
         <Stack spacing={1} alignItems={'center'} sx={{
@@ -72,30 +73,49 @@ const SideNavItem = (item: any) => {
             '@media (max-width: 768px)': {
                 width: '100%',
                 backgroundColor: 'transparent',
-                boxShadow: 'none'
+                boxShadow: 'none',
+                mt: `0px !important`,
+                borderRadius: 0
             }
         }}>
         {item.icon === 'gridview' ?
-            <GridViewIcon
-                sx={{
-                    mt: 0.25,
-                    fontSize: 24,
-                    color: focused ? '#ffffff' : blueGrey[200],
-                    '@media (max-width: 768px)': {
-                        color: focused ? purple[500] : blueGrey[200]
-                    }
-                }}
-            /> :
-            <ArticleIcon
-                sx={{
-                    mt: 0.25,
-                    fontSize: 24,
-                    color: focused ? '#ffffff' : blueGrey[200],
-                    '@media (max-width: 768px)': {
-                        color: focused ? purple[500] : blueGrey[200]
-                    }
-                }}
-            />
+            <Box sx={{
+                mt: 0.25,
+                width: 24,
+                height: 24,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <GridViewIcon
+                    sx={{
+                        fontSize: 24,
+                        color: focused ? '#ffffff' : blueGrey[200],
+                        '@media (max-width: 768px)': {
+                            color: focused ? purple[500] : blueGrey[200]
+                        }
+                    }}
+                />
+            </Box>
+            :
+            <Box sx={{
+                mt: 0.25,
+                width: 24,
+                height: 24,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
+                <SplitscreenIcon
+                    sx={{
+                        fontSize: 24,
+                        color: focused ? '#ffffff' : blueGrey[200],
+                        '@media (max-width: 768px)': {
+                            color: focused ? purple[500] : blueGrey[200]
+                        }
+                    }}
+                />
+            </Box>
         }
         <Typography sx={{
             fontSize: 12,

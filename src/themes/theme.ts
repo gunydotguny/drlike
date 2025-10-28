@@ -13,12 +13,13 @@ import {
   blueGrey,
   grey,
   deepPurple,
+  purple,
 } from "@mui/material/colors";
 import khcBlue from "./khcBlue";
 export const theme = createTheme({
   palette: {
     mode: "light",
-    primary: khcBlue,
+    primary: purple,
     secondary: {
       main: blueGrey[900],
     },

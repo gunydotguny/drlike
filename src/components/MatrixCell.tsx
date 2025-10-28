@@ -31,7 +31,7 @@ export default function MatrixCell({ item }: { item: any | null }) {
             <Paper
                 sx={{
                     width: "100%",
-                    aspectRatio: "1 / 1",
+                    height: '78px',
                     bgcolor: "#f5f5f5",
                     display: "flex",
                     alignItems: "center",
@@ -51,6 +51,7 @@ export default function MatrixCell({ item }: { item: any | null }) {
             sx={{
                 border: `1px solid ${blueGrey[50]}`,
                 minWidth: 88,
+                height: '78px',
                 px: 1,
                 pt: 0.5,
                 pb: 1,

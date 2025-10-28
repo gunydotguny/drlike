@@ -63,7 +63,7 @@ export default function NewsPage() {
             <Box sx={{
                 p: 3,
             }}>
-                {loading ?
+                {loading &&
                     <Box sx={{
                         position: 'fixed',
                         display: 'flex',
@@ -76,10 +76,12 @@ export default function NewsPage() {
                     }}>
                         <CircularProgress />
                     </Box>
-                    :
+                }
+                {news &&
                     <>
                         <NewsFilter filters={filters} setFilters={setFilters} />
-                        <NewsList items={news} /></>
+                        <NewsList items={news} />
+                    </>
                 }
             </Box>
         </Layout>

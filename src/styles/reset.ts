@@ -39,6 +39,22 @@ body,html {
   min-height: 100%
 }
 
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   font-size: 10px;

@@ -85,8 +85,11 @@ export default function MatrixPage() {
             {/* ✅ 상단 헤더 */}
             <Box sx={{
                 px: 3,
-                mt: 6,
+                pt: 6,
                 mb: 1,
+                '@media (max-width: 768px)': {
+                    pt: 3,
+                }
             }}>
                 <Typography sx={{
                     fontSize: 28,
@@ -107,6 +110,7 @@ export default function MatrixPage() {
                     left: 0,
                     right: 0,
                     bottom: 0,
+                    background: '#ffffff'
                 }}>
                     <CircularProgress />
                 </Box>
@@ -128,6 +132,11 @@ export default function MatrixPage() {
 
                     <Box sx={{
                         p: 3,
+                        '@media (max-width: 768px)': {
+                            overflowX: 'scroll',
+                            p: 0,
+                            pt: 3,
+                        }
                     }}>
                         <Box sx={{
                             borderRadius: 1,
@@ -136,14 +145,27 @@ export default function MatrixPage() {
                             pt: 3,
                             pr: 3,
                             pb: 3,
-                            height: '814px',
+                            height: ' dpx',
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            '@media (max-width: 768px)': {
+                                justifyContent: 'flex-start',
+                                minWidth: '1200px',
+                                backgroundColor: '#ffffff',
+                                pl: 0,
+                                pt: 0,
+                                pr: 0,
+                                pb: 0,
+                            }
                         }}>
                             <Box sx={{
                                 ml: -2,
                                 mt: -2,
+                                '@media (max-width: 768px)': {
+                                    ml: 0,
+                                    pr: 3,
+                                }
                             }}>
                                 <Box
                                     sx={{
@@ -152,9 +174,10 @@ export default function MatrixPage() {
                                         gridAutoRows: "1fr",
                                         gap: 0.5,
                                         height: HEADER_HEIGHT,
+
                                     }}
                                 >
-                                    <CustomCell>
+                                    <CustomCell sticky>
                                         공급 ↓<br />수요 →
                                     </CustomCell>
                                     {FIXED_ORDER.map((item, index) => (
@@ -176,7 +199,7 @@ export default function MatrixPage() {
                                             }}
                                         >
                                             {/* 행 헤더 */}
-                                            <CustomCell>
+                                            <CustomCell sticky>
                                                 {row.supplier}
                                             </CustomCell>
                                             {/* 셀 */}
@@ -195,13 +218,32 @@ export default function MatrixPage() {
     );
 }
 
-function CustomCell({ children }: { children: any }) {
-    return <Box sx={{
+function CustomCell({ children, sticky }: { children: any, sticky?: boolean, }) {
+    return <Box sx={sticky ? {
         width: "100%",
         height: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: '#ffffff',
+        '@media (max-width: 768px)': {
+            position: 'sticky',
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: '#ffffff',
+            zIndex: 99
+        }
+    } : {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: '#ffffff',
     }}>
         <Typography sx={{
             fontSize: 14,
