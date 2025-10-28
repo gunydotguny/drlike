@@ -11,7 +11,7 @@ const pages = [
     { path: '/news', label: 'News', icon: 'article' },
 ]
 
-export const SideNav = () => {
+export default function SideNav() {
     const router = useRouter();
     if (router.pathname === '/') return null;
     return <Box sx={{

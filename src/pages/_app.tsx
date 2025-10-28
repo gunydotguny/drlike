@@ -34,7 +34,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Analytics } from "@vercel/analytics/next"
 import { Box } from "@mui/material";
-import { SideNav } from "./components/SideNav";
+import SideNav from "./components/SideNav";
 
 declare global {
   interface Window {

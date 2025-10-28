@@ -4,11 +4,8 @@ import { purple, blueGrey } from "@mui/material/colors";
 export const scoreColor = (score?: number) => {
     if (score == null || Number.isNaN(score)) return '#ffffff';
     if (score >= 5.0) return '#000000';
-    if (score >= 4.5) return purple[500];
-    if (score >= 4.0) return purple[400];
-    if (score >= 3.5) return purple[300];
-    if (score >= 3.0) return purple[200];
-    if (score >= 2.5) return blueGrey[100];
+    if (score >= 4.0) return purple[500];
+    if (score >= 3.0) return purple[300];
     if (score >= 2.0) return blueGrey[50];
     if (score >= 0) return '#ffffff';
     return purple[500];
@@ -20,7 +17,7 @@ export const textColor = (score?: number) => {
     return score >= 3.0 ? "#fff" : blueGrey[700];; // 4점 이상이면 흰색
 };
 
-export function MatrixCell({ item }: { item: any | null }) {
+export default function MatrixCell({ item }: { item: any | null }) {
     if (!item) {
         return (
             <Paper
@@ -61,12 +58,12 @@ export function MatrixCell({ item }: { item: any | null }) {
             }}
         >
             <Typography sx={{
-                fontSize: 28,
-                lineHeight: '36px',
+                fontSize: 24,
+                lineHeight: '32px',
                 fontWeight: 700,
                 color: textColor(avg)
             }}>
-                {(avg * 10 * 2).toFixed(0)}
+                {(avg).toFixed(1)}
             </Typography>
             <Box sx={{
                 flex: 1,
@@ -79,7 +76,7 @@ export function MatrixCell({ item }: { item: any | null }) {
                     sx={{
                         fontSize: 12,
                         lineHeight: '16px',
-                        // fontWeight: 700,
+                        fontWeight: 700,
                         color: textColor(avg),
                         // textAlign: 'center',
                         lineBreak: 'break-all',

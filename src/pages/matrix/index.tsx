@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Typography, Paper, CircularProgress } from "@mui/material";
 import { Layout } from "../components/Layout";
 import { blue, blueGrey } from "@mui/material/colors";
-import { MatrixCell } from "../components/MatrixCell";
+import MatrixCell from "../components/MatrixCell";
 
 
 const FIXED_ORDER = [
@@ -32,7 +32,7 @@ export default function MatrixPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("/api/notion?minScore=0&sort=평균점수:desc");
+                const res = await fetch("/api/strategy?minScore=0&sort=평균점수:desc");
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
 
@@ -80,23 +80,6 @@ export default function MatrixPage() {
         };
         fetchData();
     }, []);
-
-    if (loading)
-        return (
-            <Layout>
-                <Box sx={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center" }}>
-                    <CircularProgress />
-                </Box>
-            </Layout>
-        );
-
-    if (error)
-        return (
-            <Layout>
-                <Typography color="error">{error}</Typography>
-            </Layout>
-        );
-
     return (
         <Layout>
             {/* ✅ 상단 헤더 */}
@@ -120,52 +103,68 @@ export default function MatrixPage() {
                 <Box sx={{
                     borderRadius: 1,
                     backgroundColor: '#ffffff',
-                    pl: 1,
-                    pt: 1,
+                    pl: 3,
+                    pt: 3,
                     pr: 3,
                     pb: 3,
+                    height: '814px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
                 }}>
-                    <Box
-                        sx={{
-                            display: "grid",
-                            gridTemplateColumns: `${HEADER_WIDTH}px repeat(${FIXED_ORDER.length}, 1fr)`,
-                            gridAutoRows: "1fr",
-                            gap: 0.5,
-                            height: HEADER_HEIGHT,
-                        }}
-                    >
-                        <CustomCell>
-                            공급 ↓<br />수요 →
-                        </CustomCell>
-                        {FIXED_ORDER.map((item, index) => (
-                            <CustomCell
-                                key={index}
-                            >
-                                {item}
-                            </CustomCell>
-                        ))}
-                    </Box>
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-                        {rows.map((row) => (
-                            <Box
-                                key={row.supplier}
-                                sx={{
-                                    display: "grid",
-                                    gridTemplateColumns: `${HEADER_WIDTH}px repeat(${FIXED_ORDER.length}, 1fr)`,
-                                    gap: 0.5,
-                                }}
-                            >
-                                {/* 행 헤더 */}
-                                <CustomCell>
-                                    {row.supplier}
-                                </CustomCell>
-                                {/* 셀 */}
-                                {row.cells.map(({ item }, idx) => (
-                                    <MatrixCell key={idx} item={item} />
-                                ))}
+                    {loading ?
+                        <CircularProgress />
+                        :
+                        error ?
+                            <Typography color="error">{error}</Typography>
+                            : <Box sx={{
+                                ml: -2,
+                                mt: -2,
+                            }}>
+                                <Box
+                                    sx={{
+                                        display: "grid",
+                                        gridTemplateColumns: `${HEADER_WIDTH}px repeat(${FIXED_ORDER.length}, 1fr)`,
+                                        gridAutoRows: "1fr",
+                                        gap: 0.5,
+                                        height: HEADER_HEIGHT,
+                                    }}
+                                >
+                                    <CustomCell>
+                                        공급 ↓<br />수요 →
+                                    </CustomCell>
+                                    {FIXED_ORDER.map((item, index) => (
+                                        <CustomCell
+                                            key={index}
+                                        >
+                                            {item}
+                                        </CustomCell>
+                                    ))}
+                                </Box>
+                                <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+                                    {rows.map((row) => (
+                                        <Box
+                                            key={row.supplier}
+                                            sx={{
+                                                display: "grid",
+                                                gridTemplateColumns: `${HEADER_WIDTH}px repeat(${FIXED_ORDER.length}, 1fr)`,
+                                                gap: 0.5,
+                                            }}
+                                        >
+                                            {/* 행 헤더 */}
+                                            <CustomCell>
+                                                {row.supplier}
+                                            </CustomCell>
+                                            {/* 셀 */}
+                                            {row.cells.map(({ item }, idx) => (
+                                                <MatrixCell key={idx} item={item} />
+                                            ))}
+                                        </Box>
+                                    ))}
+                                </Box>
                             </Box>
-                        ))}
-                    </Box>
+
+                    }
                 </Box>
             </Box>
         </Layout>

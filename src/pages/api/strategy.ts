@@ -3,10 +3,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 // 🔐 환경변수 로드
 const TOKEN = process.env.NOTION_TOKEN!;
-const DATABASE_ID = process.env.NOTION_DATABASE_ID!;
+const DATABASE_ID = process.env.NOTION_STRATEGY_DB_ID!;
 
 // ✅ 공통 fetch 함수 (SDK 대신 직접 REST API 호출)
-async function queryNotionDatabase({ filter, sorts }: any = {}) {
+async function queryNotionStrategyDatabase({ filter, sorts }: any = {}) {
     const response = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
         method: "POST",
         headers: {
@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const sorts = [{ property: propName, direction }];
 
-        const data = await queryNotionDatabase({ filter, sorts });
+        const data = await queryNotionStrategyDatabase({ filter, sorts });
 
         // 간단 정제
         const items = (data.results ?? []).map((page: any) => ({
