@@ -33,6 +33,8 @@ import Script from "next/script";
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Analytics } from "@vercel/analytics/next"
+import { Box } from "@mui/material";
+import { SideNav } from "./components/SideNav";
 
 declare global {
   interface Window {
@@ -70,7 +72,7 @@ function MyApp(props: MyAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <meta charSet="utf-8" />
-        <title>Dr.LIKE</title>
+        <title>Kakaohealthcare DP</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover"
@@ -89,11 +91,11 @@ function MyApp(props: MyAppProps) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-        <link rel="manifest" href="/images/favicon/manifest.json" />
+        {/* <link rel="shortcut icon" href="/images/favicon/favicon.ico" /> */}
+        {/* <link rel="manifest" href="/images/favicon/manifest.json" /> */}
         {/* 앱 아이콘은 그대로 유지 */}
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+        {/* <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png" /> */}
+        {/* <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" /> */}
       </Head>
 
       {/* ✅ next/script로 외부 스크립트 로드 */}
@@ -107,6 +109,7 @@ function MyApp(props: MyAppProps) {
           <CssBaseline />
           <Global styles={reset} />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <SideNav />
             <Component {...pageProps} key={router.route} />
           </LocalizationProvider>
         </ThemeProvider>

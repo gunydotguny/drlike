@@ -48,7 +48,7 @@ html {
 body {
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  background-color: #F6F7F9;
+  background-color: #F2F3F7;
   font-size: 15px;
   font-weight: 400;
   line-height: 19px
