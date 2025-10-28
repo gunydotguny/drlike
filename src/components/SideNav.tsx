@@ -22,8 +22,24 @@ export default function SideNav() {
         top: 0,
         bottom: 0,
         pt: 2,
+        zIndex: 999,
+        '@media (max-width: 768px)': {
+            top: 'initial',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100%',
+            p: 0,
+        }
     }}>
-        <Stack direction={'column'} spacing={1} alignItems={'center'}>
+        <Stack spacing={1} alignItems={'center'} sx={{
+            flexDirection: 'column',
+            '@media (max-width: 768px)': {
+                flexDirection: 'row',
+                justifyContent: 'center',
+                width: '100%',
+            }
+        }}>
             {pages.map((item, index) => {
                 return <SideNavItem key={index} {...item} />
             })}
@@ -33,7 +49,7 @@ export default function SideNav() {
 
 const SideNavItem = (item: any) => {
     const router = useRouter();
-    const focused = router.pathname === item.path;
+    const focused = router.asPath.startsWith(item.path);
     const handleClick = () => {
         router.push(item.path);
     }
@@ -52,6 +68,11 @@ const SideNavItem = (item: any) => {
             transition: 'all 0.3s ease',
             ' *': {
                 transition: 'all 0.3s ease',
+            },
+            '@media (max-width: 768px)': {
+                width: '100%',
+                backgroundColor: 'transparent',
+                boxShadow: 'none'
             }
         }}>
         {item.icon === 'gridview' ?
@@ -59,14 +80,20 @@ const SideNavItem = (item: any) => {
                 sx={{
                     mt: 0.25,
                     fontSize: 24,
-                    color: focused ? '#ffffff' : blueGrey[200]
+                    color: focused ? '#ffffff' : blueGrey[200],
+                    '@media (max-width: 768px)': {
+                        color: focused ? purple[500] : blueGrey[200]
+                    }
                 }}
             /> :
             <ArticleIcon
                 sx={{
                     mt: 0.25,
                     fontSize: 24,
-                    color: focused ? '#ffffff' : blueGrey[200]
+                    color: focused ? '#ffffff' : blueGrey[200],
+                    '@media (max-width: 768px)': {
+                        color: focused ? purple[500] : blueGrey[200]
+                    }
                 }}
             />
         }
@@ -74,7 +101,10 @@ const SideNavItem = (item: any) => {
             fontSize: 12,
             lineHeight: '16px',
             fontWeight: 700,
-            color: focused ? '#ffffff' : blueGrey[200]
+            color: focused ? '#ffffff' : blueGrey[200],
+            '@media (max-width: 768px)': {
+                color: focused ? purple[500] : blueGrey[200]
+            }
         }}>
             {item.label}
         </Typography>

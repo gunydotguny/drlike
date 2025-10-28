@@ -32,7 +32,7 @@ export default function MatrixPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("/api/strategy?minScore=0&sort=평균점수:desc");
+                const res = await fetch("/api/matrix?minScore=0&sort=평균점수:desc");
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
 
@@ -65,7 +65,7 @@ export default function MatrixPage() {
                 setRows(preparedRows);
                 console.table(
                     data.items.map((i: any) => ({
-                        전략명: i.title,
+                        전략명: i.strategyName,
                         공급자: i.supplier,
                         수요자: i.customer,
                         평균점수: i.avgScore,
@@ -97,27 +97,51 @@ export default function MatrixPage() {
                 </Typography>
             </Box>
             {/* ✅ Matrix */}
-            <Box sx={{
-                p: 3,
-            }}>
+            {loading ?
                 <Box sx={{
-                    borderRadius: 1,
-                    backgroundColor: '#ffffff',
-                    pl: 3,
-                    pt: 3,
-                    pr: 3,
-                    pb: 3,
-                    height: '814px',
+                    position: 'fixed',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
                 }}>
-                    {loading ?
-                        <CircularProgress />
-                        :
-                        error ?
-                            <Typography color="error">{error}</Typography>
-                            : <Box sx={{
+                    <CircularProgress />
+                </Box>
+                :
+                error ?
+                    <Box sx={{
+                        position: 'fixed',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                    }}>
+                        <Typography color="error">{error}</Typography>
+                    </Box>
+                    :
+
+                    <Box sx={{
+                        p: 3,
+                    }}>
+                        <Box sx={{
+                            borderRadius: 1,
+                            backgroundColor: '#ffffff',
+                            pl: 3,
+                            pt: 3,
+                            pr: 3,
+                            pb: 3,
+                            height: '814px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Box sx={{
                                 ml: -2,
                                 mt: -2,
                             }}>
@@ -163,10 +187,10 @@ export default function MatrixPage() {
                                     ))}
                                 </Box>
                             </Box>
+                        </Box>
+                    </Box>
 
-                    }
-                </Box>
-            </Box>
+            }
         </Layout>
     );
 }

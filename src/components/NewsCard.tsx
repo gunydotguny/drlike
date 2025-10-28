@@ -2,6 +2,7 @@
 import { Paper, Typography } from "@mui/material";
 
 export default function NewsCard({ item }: any) {
+    console.log(item)
     return (
         <Paper
             sx={{

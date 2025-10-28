@@ -1,28 +1,33 @@
-// pages/matrix/[id].tsx
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Box, Typography, CircularProgress, Paper, Divider } from "@mui/material";
+import {
+  Box,
+  Typography,
+  CircularProgress,
+  Divider,
+  Paper,
+  Button,
+  Stack,
+} from "@mui/material";
 import Layout from "../../components/Layout";
-
 
 export default function StrategyDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [data, setData] = useState<any>(null);
+
+  const [data, setData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/strategy?id=${id}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const res = await fetch("/api/matrix");
         const json = await res.json();
-        setData(json.item);
-      } catch (err: any) {
-        console.error(err);
-        setError(err.message);
+        const found = json.items.find((i: any) => i.id === id);
+        setData(found || null);
+      } catch (err) {
+        console.error("❌ fetch error:", err);
       } finally {
         setLoading(false);
       }
@@ -33,17 +38,15 @@ export default function StrategyDetailPage() {
   if (loading)
     return (
       <Layout>
-        <Box sx={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
           <CircularProgress />
-        </Box>
-      </Layout>
-    );
-
-  if (error)
-    return (
-      <Layout>
-        <Box sx={{ p: 4 }}>
-          <Typography color="error">{error}</Typography>
         </Box>
       </Layout>
     );
@@ -52,68 +55,88 @@ export default function StrategyDetailPage() {
     return (
       <Layout>
         <Box sx={{ p: 4 }}>
-          <Typography>❗ 데이터를 불러오지 못했습니다.</Typography>
+          <Typography>데이터를 불러오지 못했습니다.</Typography>
         </Box>
       </Layout>
     );
 
-  const props = data.properties || {};
-
   return (
     <Layout>
-      <Box sx={{ p: 4, maxWidth: 900, mx: "auto" }}>
-        <Typography variant="h5" fontWeight="bold" gutterBottom>
-          {props["전략명"]?.title?.[0]?.plain_text ?? "제목 없음"}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" mb={2}>
-          {data.url}
+      <Box sx={{ p: 4 }}>
+        {/* ✅ 제목 */}
+        <Typography variant="h4" fontWeight="bold" gutterBottom>
+          {data.strategyName || "전략 상세"}
         </Typography>
 
-        <Paper sx={{ p: 3, borderRadius: 2 }}>
-          {Object.entries(props).map(([key, value]: [string, any]) => {
-            let display = "";
-            switch (value.type) {
-              case "title":
-                display = value.title?.map((t: any) => t.plain_text).join("") ?? "";
-                break;
-              case "rich_text":
-                display = value.rich_text?.map((t: any) => t.plain_text).join("") ?? "";
-                break;
-              case "number":
-                display = value.number?.toString() ?? "";
-                break;
-              case "select":
-                display = value.select?.name ?? "";
-                break;
-              case "multi_select":
-                display = value.multi_select?.map((s: any) => s.name).join(", ");
-                break;
-              case "status":
-                display = value.status?.name ?? "";
-                break;
-              case "date":
-                display = value.date?.start ?? "";
-                break;
-              case "checkbox":
-                display = value.checkbox ? "✅" : "❌";
-                break;
-              case "formula":
-                display = value.formula?.number ?? value.formula?.string ?? "";
-                break;
-              default:
-                display = JSON.stringify(value);
-            }
+        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+          {data.strategyDesc || "-"}
+        </Typography>
 
-            return (
-              <Box key={key} sx={{ mb: 1 }}>
-                <Typography fontWeight="bold">{key}</Typography>
-                <Typography sx={{ whiteSpace: "pre-wrap" }}>{display || "—"}</Typography>
-                <Divider sx={{ my: 1 }} />
-              </Box>
-            );
-          })}
+        <Divider sx={{ my: 3 }} />
+
+        {/* ✅ 정보 카드 */}
+        <Paper sx={{ p: 3, mb: 3 }}>
+          <Stack spacing={1.5}>
+            <Field label="공급자" value={data.supplier} />
+            <Field label="수요자" value={data.customer} />
+            <Field label="데이터" value={data.dataType} />
+            <Field label="시장 동향" value={data.marketTrend} />
+            <Field label="서비스/제품 형태" value={data.serviceType} />
+            <Field label="서비스/제품 형태 설명" value={data.serviceTypeDesc} />
+            <Field label="수요 크기" value={data.demandSize} />
+            <Field label="수요 크기 설명" value={data.demandSizeDesc} />
+            <Field label="공급 용이성" value={data.supplyEase} />
+            <Field label="공급 용이성 설명" value={data.supplyEaseDesc} />
+            <Field label="수익 크기" value={data.revenueSize} />
+            <Field label="수익 크기 설명" value={data.revenueSizeDesc} />
+            <Field label="대표 사례" value={data.examples} />
+            <Field
+              label="평균점수"
+              value={data.avgScore ? `${data.avgScore}점` : "-"}
+            />
+          </Stack>
         </Paper>
+
+        {/* ✅ 원본 노션 링크 */}
+        {data.url && (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => window.open(data.url, "_blank")}
+          >
+            원본 노션 페이지 열기
+          </Button>
+        )}
       </Box>
     </Layout>
+  );
+}
+
+/** ✅ 각 필드 표현용 작은 컴포넌트 */
+function Field({ label, value }: { label: string; value: any }) {
+  return (
+    <Box>
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        sx={{ fontWeight: 600 }}
+      >
+        {label}
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          ml: 0.5,
+          whiteSpace: "pre-wrap",
+          wordBreak: "keep-all",
+        }}
+      >
+        {Array.isArray(value)
+          ? value.length
+            ? value.join(", ")
+            : "-"
+          : value || "-"}
+      </Typography>
+    </Box>
   );
 }

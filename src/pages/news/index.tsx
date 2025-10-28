@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, CircularProgress } from "@mui/material";
 import NewsFilter from "../../components/NewsFilter";
 import NewsList from "../../components/NewList";
+import Layout from "@/components/Layout";
 
 export default function NewsPage() {
     const [news, setNews] = useState<any[]>([]);
@@ -44,17 +45,43 @@ export default function NewsPage() {
     }, [cursor, hasMore, loading]);
 
     return (
-        <Box sx={{ p: 3 }}>
-            <Typography variant="h5" fontWeight="bold" mb={2}>
-                📰 헬스케어 뉴스 데이터
-            </Typography>
-            <NewsFilter filters={filters} setFilters={setFilters} />
-            <NewsList items={news} />
-            {loading && (
-                <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
-                    <CircularProgress />
-                </Box>
-            )}
-        </Box>
+        <Layout>
+            {/* ✅ 상단 헤더 */}
+            <Box sx={{
+                px: 3,
+                mt: 6,
+                mb: 1,
+            }}>
+                <Typography sx={{
+                    fontSize: 28,
+                    lineHeight: '36px',
+                    fontWeight: 700,
+                }}>
+                    제리의 데일리 뉴스 크롤링
+                </Typography>
+            </Box>
+            <Box sx={{
+                p: 3,
+            }}>
+                {loading ?
+                    <Box sx={{
+                        position: 'fixed',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                    }}>
+                        <CircularProgress />
+                    </Box>
+                    :
+                    <>
+                        <NewsFilter filters={filters} setFilters={setFilters} />
+                        <NewsList items={news} /></>
+                }
+            </Box>
+        </Layout>
     );
 }

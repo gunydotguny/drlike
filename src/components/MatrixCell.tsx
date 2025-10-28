@@ -20,13 +20,12 @@ export const textColor = (score?: number) => {
 
 export default function MatrixCell({ item }: { item: any | null }) {
     const router = useRouter()
-    const { strategyName, avgScore, supplier, customer, url } = item;
+    const { id, strategyName, avgScore, supplier, customer, url } = item;
     const score = Number(avgScore ?? 0);
 
     const handleClick = () => {
-        router.push(url)
+        router.push(`/matrix/${id}`)
     }
-    console.log(item)
     if (!item) {
         return (
             <Paper
