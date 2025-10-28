@@ -2,7 +2,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Box, Typography, CircularProgress, Paper, Divider } from "@mui/material";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 
 
 export default function StrategyDetailPage() {

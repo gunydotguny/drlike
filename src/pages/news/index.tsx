@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, CircularProgress } from "@mui/material";
-import NewsFilter from "../components/NewsFilter";
-import NewsList from "../components/NewList";
+import NewsFilter from "../../components/NewsFilter";
+import NewsList from "../../components/NewList";
 
 export default function NewsPage() {
     const [news, setNews] = useState<any[]>([]);

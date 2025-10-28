@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Paper, CircularProgress } from "@mui/material";
 import { blue, blueGrey } from "@mui/material/colors";
-import MatrixCell from "../components/MatrixCell";
-import Layout from "../components/Layout";
+import MatrixCell from "../../components/MatrixCell";
+import Layout from "../../components/Layout";
 
 
 const FIXED_ORDER = [

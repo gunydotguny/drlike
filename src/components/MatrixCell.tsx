@@ -1,5 +1,6 @@
 import { alpha, Box, ButtonBase, Paper, Typography } from "@mui/material";
 import { purple, blueGrey } from "@mui/material/colors";
+import { useRouter } from "next/router";
 
 export const scoreColor = (score?: number) => {
     if (score == null || Number.isNaN(score)) return '#ffffff';
@@ -18,28 +19,36 @@ export const textColor = (score?: number) => {
 };
 
 export default function MatrixCell({ item }: { item: any | null }) {
+    const router = useRouter()
+    const { strategyName, avgScore, supplier, customer, url } = item;
+    const score = Number(avgScore ?? 0);
+
+    const handleClick = () => {
+        router.push(url)
+    }
+    console.log(item)
     if (!item) {
         return (
             <Paper
                 sx={{
                     width: "100%",
+                    aspectRatio: "1 / 1",
                     bgcolor: "#f5f5f5",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     color: "#aaa",
-                    borderRadius: 2,
+                    borderRadius: 1.5,
+                    fontSize: 13,
                 }}
             >
                 –
             </Paper>
         );
     }
-
-    const avg = item.avgScore || 0;
-
     return (
         <ButtonBase
+            onClick={handleClick}
             sx={{
                 border: `1px solid ${blueGrey[50]}`,
                 minWidth: 88,
@@ -50,20 +59,20 @@ export default function MatrixCell({ item }: { item: any | null }) {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 justifyContent: "center",
-                bgcolor: scoreColor(avg),
+                bgcolor: scoreColor(score),
                 borderRadius: 1,
                 transition: "all 0.3s ease",
                 boxShadow: 'none',
-                // "&:hover": { boxShadow: `4px 4px 16px ${alpha(scoreColor(avg), 0.8)}` },
+                // "&:hover": { boxShadow: `4px 4px 16px ${alpha(scoreColor(score), 0.8)}` },
             }}
         >
             <Typography sx={{
                 fontSize: 24,
                 lineHeight: '32px',
                 fontWeight: 700,
-                color: textColor(avg)
+                color: textColor(score)
             }}>
-                {(avg).toFixed(1)}
+                {(score).toFixed(1)}
             </Typography>
             <Box sx={{
                 flex: 1,
@@ -77,12 +86,12 @@ export default function MatrixCell({ item }: { item: any | null }) {
                         fontSize: 12,
                         lineHeight: '16px',
                         fontWeight: 700,
-                        color: textColor(avg),
+                        color: textColor(score),
                         // textAlign: 'center',
                         lineBreak: 'break-all',
                     }}
                 >
-                    {item.title || item.strategyName}
+                    {strategyName}
                 </Typography>
             </Box>
         </ButtonBase>
