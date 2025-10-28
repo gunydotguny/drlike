@@ -1,65 +1,65 @@
-// pages/api/notion.ts
+// pages/api/strategy.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 
-// 🔐 환경변수 로드
 const TOKEN = process.env.NOTION_TOKEN!;
 const DATABASE_ID = process.env.NOTION_STRATEGY_DB_ID!;
+const NOTION_VERSION = "2022-06-28";
 
-// ✅ 공통 fetch 함수 (SDK 대신 직접 REST API 호출)
-async function queryNotionStrategyDatabase({ filter, sorts }: any = {}) {
-    const response = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${TOKEN}`,
-            "Content-Type": "application/json",
-            "Notion-Version": "2022-06-28",
-        },
-        body: JSON.stringify({
-            page_size: 100,
-            ...(filter ? { filter } : {}),
-            ...(sorts ? { sorts } : {}),
-        }),
-    });
+// ✅ 공통 fetch
+async function notionFetch(url: string, body?: any) {
+  const res = await fetch(url, {
+    method: body ? "POST" : "GET",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      "Content-Type": "application/json",
+      "Notion-Version": NOTION_VERSION,
+    },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  });
 
-    if (!response.ok) {
-        const text = await response.text();
-        console.error("❌ Notion API Error:", text);
-        throw new Error(`Notion API failed: ${response.status}`);
-    }
-
-    return response.json();
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("❌ Notion API Error:", text);
+    throw new Error(`Notion API failed: ${res.status}`);
+  }
+  return res.json();
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    try {
-        // 쿼리 파라미터 처리
-        const minScore = Number(req.query.minScore ?? 0);
-        const sortParam = (req.query.sort as string) || "평균점수:desc";
-        const [propName, directionRaw] = sortParam.split(":");
-        const direction = directionRaw === "asc" ? "ascending" : "descending";
+  try {
+    const { id, minScore, sort } = req.query;
 
-        const filter = {
-            property: "평균점수",
-            number: { greater_than_or_equal_to: minScore },
-        };
-
-        const sorts = [{ property: propName, direction }];
-
-        const data = await queryNotionStrategyDatabase({ filter, sorts });
-
-        console.log("🧩 Notion raw data example:", JSON.stringify(data.results[0]?.properties?.["평균점수"], null, 2));
-        // 간단 정제
-        const items = (data.results ?? []).map((page: any) => ({
-            id: page.id,
-            title: page.properties?.["전략명"]?.title?.[0]?.plain_text ?? "",
-            supplier: page.properties?.["공급자"]?.select?.name ?? "",
-            customer: page.properties?.["수요자"]?.select?.name ?? "",
-            avgScore: page.properties?.["평균점수"]?.number ?? null,
-            url: page.url,
-        }));
-
-        res.status(200).json({ items, count: items.length });
-    } catch (err: any) {
-        res.status(500).json({ error: err.message });
+    // ✅ 단건 조회
+    if (id) {
+      const data = await notionFetch(`https://api.notion.com/v1/pages/${id}`);
+      return res.status(200).json({ item: data });
     }
+
+    // ✅ 전체 조회
+    const body: any = { page_size: 100 };
+
+    if (minScore) {
+      body.filter = {
+        property: "평균점수",
+        number: { greater_than_or_equal_to: Number(minScore) },
+      };
+    }
+
+    if (sort) {
+      const [prop, dir] = (sort as string).split(":");
+      body.sorts = [{ property: prop, direction: dir === "asc" ? "ascending" : "descending" }];
+    }
+
+    const data = await notionFetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, body);
+
+    const items = (data.results ?? []).map((page: any) => ({
+      id: page.id,
+      url: page.url,
+      properties: page.properties,
+    }));
+
+    res.status(200).json({ items, count: items.length });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
 }

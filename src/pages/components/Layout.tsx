@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { SIDENAV_WIDTH } from "./SideNav";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <Box sx={{
             pl: SIDENAV_WIDTH,
