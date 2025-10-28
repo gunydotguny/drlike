@@ -47,6 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const data = await queryNotionStrategyDatabase({ filter, sorts });
 
+        console.log("🧩 Notion raw data example:", JSON.stringify(data.results[0]?.properties?.["평균점수"], null, 2));
         // 간단 정제
         const items = (data.results ?? []).map((page: any) => ({
             id: page.id,
